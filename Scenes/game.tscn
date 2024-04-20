@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4d7ecqlohxt"]
+[gd_scene load_steps=7 format=3 uid="uid://d4d7ecqlohxt"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_50n6b"]
 [ext_resource type="PackedScene" uid="uid://65w17xmk8mqq" path="res://Scenes/lane.tscn" id="1_peffo"]
+[ext_resource type="PackedScene" uid="uid://c8jkhdwbodrc3" path="res://Scenes/Ui/Hud.tscn" id="3_cfnx0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_07nas"]
 
@@ -36,3 +37,5 @@ transform = Transform3D(1, 0, 0, 0, 0.0157248, 0.999876, 0, -0.999876, 0.0157248
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bt6cj")
+
+[node name="Control" parent="." instance=ExtResource("3_cfnx0")]

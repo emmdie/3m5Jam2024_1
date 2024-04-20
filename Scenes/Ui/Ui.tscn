@@ -52,10 +52,6 @@ value = 0.7
 fill_mode = 4
 texture_progress = ExtResource("2_f8oex")
 
-[node name="Label" type="Label" parent="MarginContainer/TimerPanel/CenterContainer"]
-layout_mode = 2
-text = "60"
-
 [node name="UnitPreviewPanel" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
