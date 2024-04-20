@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dplnr5q0eeebh"]
+[gd_scene load_steps=10 format=3 uid="uid://dplnr5q0eeebh"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_s4h8k"]
 [ext_resource type="Script" path="res://Scenes/Ui/TimerPanel.gd" id="2_ah4lv"]
 [ext_resource type="Script" path="res://Scenes/Ui/Ui.gd" id="2_oqoan"]
+[ext_resource type="PackedScene" uid="uid://bxebpofejftxv" path="res://Scenes/Minigame/minigame.tscn" id="4_3up0a"]
 [ext_resource type="Script" path="res://Scenes/Ui/EnemyHealthPanel.gd" id="4_7tmcb"]
 [ext_resource type="PackedScene" uid="uid://c6i0ksc3jkqd2" path="res://Scenes/units/player_unit/fire_unit.tscn" id="4_c5rtr"]
 [ext_resource type="PackedScene" uid="uid://caext43hae4ho" path="res://Scenes/Ui/unit_preview.tscn" id="4_pivm6"]
@@ -29,11 +30,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_s4h8k")
 
-[node name="MiniGamePlaceholder" type="Label" parent="MarginContainer"]
+[node name="MiniGame" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 100
-text = "MiniGame"
+
+[node name="Minigame" parent="MarginContainer/MiniGame" instance=ExtResource("4_3up0a")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 
 [node name="TimerPanel" type="PanelContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(200, 200)
