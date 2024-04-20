@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckga2ynp7lmds"]
+
+[ext_resource type="Script" path="res://Scenes/units/tower/tower.gd" id="1_yehra"]
+
+[node name="Tower" type="Node3D"]
+script = ExtResource("1_yehra")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.5)
+size = Vector3(1, 0.4, 1)

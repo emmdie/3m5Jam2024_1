@@ -1,7 +1,7 @@
 class_name BaseUnit
 extends Node3D
 
-enum Elements {FIRE, WATHER, EARTH}
+enum Elements {FIRE, WATER, PLANT}
 
 @export var element: Elements
 
