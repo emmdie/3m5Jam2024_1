@@ -20,6 +20,15 @@ var time_to_tower_change: float:
 @onready var tower_switch_timer: SceneTreeTimer = get_tree().create_timer(0)
 
 
+func restart():
+	unit_stash.value = []
+	selected_unit.reset()
+	mana.reset()
+	enemy_health.reset()
+	player_health.reset()
+	get_tree().change_scene_to_file("res://Scenes/game.tscn")
+
+
 # Override this to change the path under which the state is saved.
 func _get_file_path():
 	return "user://game.state"
