@@ -50,8 +50,12 @@ var switch_warning_1: Node3D
 var switch_warning_2: Node3D
 
 func _ready():
+	$Camera3D.make_current()
 	GameState.mana.changed.connect(__on_mana_changed)
 	randomize()
+	
+	GameState.player_health.changed.connect(__check_win_loose)
+	GameState.enemy_health.changed.connect(__check_win_loose)
 	
 	GameState.unit_stash.value.append(UNITS.pick_random())
 	GameState.unit_stash.value.append(UNITS.pick_random())
@@ -109,6 +113,13 @@ func _input(event):
 		__select(1)
 	elif event.is_action_pressed("select_2"):
 		__select(2)
+
+
+func __check_win_loose():
+	if GameState.enemy_health.value <= 0:
+		get_tree().change_scene_to_packed(preload("res://Scenes/win.tscn"))
+	elif GameState.player_health.value <= 0:
+		get_tree().change_scene_to_packed(preload("res://Scenes/loose.tscn"))
 
 
 func __select(id: int):
