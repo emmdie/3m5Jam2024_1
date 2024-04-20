@@ -1,7 +1,19 @@
 class_name BaseUnit
 extends Node3D
 
-enum Elements {FIRE, WATER, PLANT}
+enum Elements {
+	FIRE, 
+	WATER,
+	PLANT,
+}
+const ELEMENTS = [
+	Elements.FIRE,
+	Elements.WATER,
+	Elements.PLANT,
+]
+
+static func pick_element() -> Elements:
+	return ELEMENTS.pick_random()
 
 @export var element: Elements
 
