@@ -10,9 +10,12 @@ var has_won: bool = false
 
 
 func summon() -> void:
-	preview_cam.clear_current()
-	preview_spot_light.hide()
-	preview_kick_light.hide()
+	if preview_cam:
+		preview_cam.clear_current()
+	if preview_spot_light:
+		preview_spot_light.hide()
+	if preview_kick_light:
+		preview_kick_light.hide()
 	current_lane.add_child(self)
 	behavior.change_state(UnitStateSummon.new())
 

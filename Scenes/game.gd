@@ -53,6 +53,11 @@ func _ready():
 	GameState.mana.changed.connect(__on_mana_changed)
 	randomize()
 	
+	GameState.unit_stash.value.append(UNITS.pick_random())
+	GameState.unit_stash.value.append(UNITS.pick_random())
+	GameState.unit_stash.value.append(UNITS.pick_random())
+	GameState.unit_stash.changed.emit()
+	
 	switch_warning_1 = SwitchWarning.instantiate()
 	switch_warning_2 = SwitchWarning.instantiate()
 	add_child(switch_warning_1)
@@ -91,6 +96,39 @@ func _ready():
 	unit.set_lane(lanes[0])
 	unit.summon()
 
+func _input(event):
+	if event.is_action_pressed("summon_lane_0"):
+		__summon_on_lane(0)
+	elif event.is_action_pressed("summon_lane_1"):
+		__summon_on_lane(1)
+	elif event.is_action_pressed("summon_lane_2"):
+		__summon_on_lane(2)
+	elif event.is_action_pressed("select_0"):
+		__select(0)
+	elif event.is_action_pressed("select_1"):
+		__select(1)
+	elif event.is_action_pressed("select_2"):
+		__select(2)
+
+
+func __select(id: int):
+	if id >= len(GameState.unit_stash.value):
+		return
+	GameState.selected_unit.value = id
+
+
+func __summon_on_lane(id: int):
+	if GameState.selected_unit.value >= len(GameState.unit_stash.value):
+		return
+	
+	var unit: Unit = GameState.unit_stash.value[GameState.selected_unit.value].instantiate()
+	GameState.unit_stash.value.remove_at(GameState.selected_unit.value)
+	GameState.unit_stash.changed.emit()
+	__check_add_unit()
+	
+	var lane = lanes[id]
+	unit.set_lane(lane)
+	unit.summon()
 
 func __animate_warning_appear():
 	if switch_warning_1:
@@ -122,7 +160,7 @@ func __on_mana_changed():
 	__check_add_unit()
 
 func __check_add_unit():
-	if GameState.mana.value >= GameState.rules.player_max_mana and len(GameState.unit_stash) < GameState.rules.player_unit_stash_size:
+	if GameState.mana.value >= GameState.rules.player_max_mana and len(GameState.unit_stash.value) < GameState.rules.player_unit_stash_size:
 		GameState.unit_stash.value.append(UNITS.pick_random())
 		GameState.unit_stash.changed.emit()
 		GameState.mana.value = 0
