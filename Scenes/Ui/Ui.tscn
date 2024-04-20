@@ -2,11 +2,11 @@
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_s4h8k"]
 [ext_resource type="Script" path="res://Scenes/Ui/TimerPanel.gd" id="2_ah4lv"]
-[ext_resource type="Texture2D" uid="uid://c5cjks2qwl140" path="res://Assets/Textures/icon.svg" id="2_f8oex"]
 [ext_resource type="Script" path="res://Scenes/Ui/Ui.gd" id="2_oqoan"]
 [ext_resource type="Script" path="res://Scenes/Ui/EnemyHealthPanel.gd" id="4_7tmcb"]
 [ext_resource type="PackedScene" uid="uid://c6i0ksc3jkqd2" path="res://Scenes/units/player_unit/fire_unit.tscn" id="4_c5rtr"]
 [ext_resource type="PackedScene" uid="uid://caext43hae4ho" path="res://Scenes/Ui/unit_preview.tscn" id="4_pivm6"]
+[ext_resource type="Texture2D" uid="uid://cj0ir602q6xec" path="res://Assets/Textures/Ui/Hud/sandwatch.png" id="5_imrn5"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -50,7 +50,7 @@ max_value = 1.0
 step = 0.0
 value = 0.7
 fill_mode = 4
-texture_progress = ExtResource("2_f8oex")
+texture_progress = ExtResource("5_imrn5")
 
 [node name="UnitPreviewPanel" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
