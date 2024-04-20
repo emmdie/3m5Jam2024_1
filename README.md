@@ -1,3 +1,3 @@
-Emmanuel's gamejam template
+3m4 Gamejam April 2024
 ===
-A very simple gamejam template containing a title screen, a folder structure and some settings
+Wir waren dabei!

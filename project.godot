@@ -11,15 +11,23 @@ config_version=5
 [application]
 
 config/name="Game Jam Template"
-run/main_scene="res://Scenes/Ui/Menus/main_menu.tscn"
+run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Assets/Textures/icon.svg"
+
+[autoload]
+
+GameState="*res://Singletons/game_state.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/htk_game_state/plugin.cfg")
 
 [rendering]
 

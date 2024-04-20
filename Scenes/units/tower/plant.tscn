@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctfk4brlgutyo"]
+
+[ext_resource type="PackedScene" uid="uid://ckga2ynp7lmds" path="res://Scenes/units/tower/tower.tscn" id="1_imvqp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tab1k"]
+albedo_color = Color(0.256787, 0.566273, 0.329468, 1)
+
+[node name="Tower" instance=ExtResource("1_imvqp")]
+element = 2
+
+[node name="Tower" type="CSGBox3D" parent="CSGBox3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502854, 0)
+size = Vector3(0.8, 1.04184, 0.8)
+material = SubResource("StandardMaterial3D_tab1k")
