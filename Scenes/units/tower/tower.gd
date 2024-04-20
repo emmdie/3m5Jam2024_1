@@ -21,4 +21,4 @@ func place(lane: Lane) -> void:
 func switch_lane(lane: Lane) -> void:
 	set_lane(lane)
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", lane.global_position, 1)
+	tween.tween_property(self, "global_position", lane.global_position, 0.2)

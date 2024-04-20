@@ -1,11 +1,19 @@
 @tool
 extends GameStateBase
 
+var rules := GameRules.new()
+
 # Some example variable.
 var highscore := Value.new(0)
-var time_to_tower_change: float = 1
 
-var rules := GameRules.new()
+var player_health := Value.new(rules.player_max_health)
+var enemy_health := Value.new(rules.enemy_max_health)
+
+var time_to_tower_change: float:
+	get:
+		return tower_switch_timer.time_left
+@onready var tower_switch_timer: SceneTreeTimer = get_tree().create_timer(0)
+
 
 # Override this to change the path under which the state is saved.
 func _get_file_path():
