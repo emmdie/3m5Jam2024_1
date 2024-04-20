@@ -1,6 +1,8 @@
 class_name BaseUnit
 extends Node3D
 
+signal finished_animation()
+
 enum Elements {
 	FIRE, 
 	WATER,

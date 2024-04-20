@@ -3,6 +3,9 @@ extends Node3D
 
 class TowerQueue:
 	var lane: Lane
+	var first: Tower:
+		get:
+			return towers[0]
 	var towers: Array[Tower] = []
 	func push(t: Tower):
 		towers.push_back(t)
@@ -95,7 +98,7 @@ func _ready():
 		queue.push(tower)
 		
 		tower_queues.append(queue)
-
+		
 	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[1])
 	unit.summon()
@@ -104,13 +107,30 @@ func _ready():
 func __on_fight(unit: Unit):
 	var tower_queue = tower_queues[0]
 	var i = 1
-	while i < len(tower_queues) and tower_queue.lane != unit.lane:
+	while i < len(tower_queues) and tower_queue.lane != unit.current_lane:
 		tower_queue = tower_queues[i]
 		i += 1
 	
 	var win := __rock_paper_siccsor(unit.element, tower_queue.towers[0].element)
-	tower_queue.pop().fight(not win)
+	
+	if win:
+		GameState.enemy_health.value -= 1
+	else:
+		GameState.player_health.value -= 1
+	
+	tower_queue.first.finished_animation.connect(__on_animate_tower_shift.bind(tower_queue), CONNECT_ONE_SHOT)
+	tower_queue.first.fight(not win)
 	unit.fight(win)
+	
+	# Shift the tower queue state
+	tower_holder.add_child(tower_queue.towers[1])
+	tower_queue.pop()
+	tower_queue.push(Tower.instantiate(BaseUnit.pick_element()))
+
+
+func __on_animate_tower_shift(tower_queue: TowerQueue):
+	#tower_queue.first.build()
+	pass
 
 
 func __on_tower_switch():
