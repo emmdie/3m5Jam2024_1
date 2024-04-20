@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bcngo1c0brddn"]
+
+[node name="SwitchWarning" type="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="."]
+billboard = 1
+modulate = Color(0.838541, 0.207631, 0.0681146, 1)
+text = "!"
+font_size = 33
+outline_size = 8
