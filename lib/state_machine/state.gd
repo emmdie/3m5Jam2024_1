@@ -13,3 +13,4 @@ func run(_delta: float) -> void:
 func end(new_state: State) -> void:
 	new_state.behavior = behavior
 	behavior.current_state = new_state
+	new_state.start()

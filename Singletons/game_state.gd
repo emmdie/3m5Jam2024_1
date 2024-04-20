@@ -1,6 +1,8 @@
 @tool
 extends GameStateBase
 
+signal unit_reached_tower(unit: Unit)
+
 var rules := GameRules.new()
 
 # Some example variable.

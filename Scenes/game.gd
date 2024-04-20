@@ -76,6 +76,7 @@ func _ready():
 	
 	GameState.tower_switch_timer = get_tree().create_timer(GameState.rules.tower_switch_time)
 	GameState.tower_switch_timer.timeout.connect(__on_tower_switch, CONNECT_ONE_SHOT)
+	GameState.unit_reached_tower.connect(__on_unit_reached_tower)
 	
 	switches.append(SwitchTowerDef.new(lanes))
 	
@@ -128,3 +129,7 @@ func __on_tower_switch():
 	
 	await get_tree().create_timer(0.5).timeout
 	__animate_warning_appear()
+
+
+func __on_unit_reached_tower(unit: Unit) -> void:
+	unit.fight(true)
