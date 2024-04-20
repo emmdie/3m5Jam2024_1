@@ -7,8 +7,9 @@ var rules := GameRules.new()
 
 # Some example variable.
 var highscore := Value.new(0)
-var player_health := Value.new(rules.player_max_health)
-var enemy_health := Value.new(rules.enemy_max_health)
+var player_health := Value.new(rules.player_max_health, false)
+var enemy_health := Value.new(rules.enemy_max_health, false)
+var mana := Value.new(rules.player_max_mana, false)
 
 var time_to_tower_change: float:
 	get:

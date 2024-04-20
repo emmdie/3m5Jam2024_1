@@ -68,7 +68,6 @@ func __animate_warning_disappear():
 func _ready():
 	randomize()
 	
-	
 	switch_warning_1 = SwitchWarning.instantiate()
 	switch_warning_2 = SwitchWarning.instantiate()
 	add_child(switch_warning_1)
@@ -76,7 +75,7 @@ func _ready():
 	
 	GameState.tower_switch_timer = get_tree().create_timer(GameState.rules.tower_switch_time)
 	GameState.tower_switch_timer.timeout.connect(__on_tower_switch, CONNECT_ONE_SHOT)
-	GameState.unit_reached_tower.connect(__on_unit_reached_tower)
+	GameState.unit_reached_tower.connect(__on_fight)
 	
 	switches.append(SwitchTowerDef.new(lanes))
 	
@@ -100,6 +99,19 @@ func _ready():
 	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[1])
 	unit.summon()
+
+
+func __on_fight(unit: Unit):
+	var tower_queue = tower_queues[0]
+	var i = 1
+	while i < len(tower_queues) and tower_queue.lane != unit.lane:
+		tower_queue = tower_queues[i]
+		i += 1
+	
+	var win := __rock_paper_siccsor(unit.element, tower_queue.towers[0].element)
+	tower_queue.pop().fight(not win)
+	unit.fight(win)
+
 
 func __on_tower_switch():
 	var tq1: TowerQueue
@@ -131,5 +143,15 @@ func __on_tower_switch():
 	__animate_warning_appear()
 
 
-func __on_unit_reached_tower(unit: Unit) -> void:
-	unit.fight(true)
+func __rock_paper_siccsor(player: BaseUnit.Elements, enemy: BaseUnit.Elements) -> bool:
+	if player == enemy:
+		return GameState.rules.tie_player_advantage
+	match player:
+		BaseUnit.Elements.FIRE:
+			return enemy == BaseUnit.Elements.PLANT
+		BaseUnit.Elements.PLANT:
+			return enemy == BaseUnit.Elements.WATER
+		BaseUnit.Elements.WATER:
+			return enemy == BaseUnit.Elements.FIRE
+	# Unreachable
+	return true
