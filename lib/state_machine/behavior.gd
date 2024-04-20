@@ -2,7 +2,7 @@ class_name Behavior
 extends Node
 
 
-@export var unit: Node
+@export var unit: Unit
 @export var start_state: GDScript
 
 var stopped: bool = false
@@ -23,7 +23,4 @@ func _process(delta: float) -> void:
 func change_state(new_state: State) -> void:
 	if stopped:
 		return
-	current_state.end()
-	current_state = new_state
-	current_state.behavior = self
-	current_state.start()
+	current_state.end(new_state)
