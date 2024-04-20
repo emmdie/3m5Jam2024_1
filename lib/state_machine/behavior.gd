@@ -2,7 +2,7 @@ class_name Behavior
 extends Node
 
 
-@export var unit: Unit
+@export var unit: BaseUnit
 @export var start_state: GDScript
 
 var stopped: bool = false
