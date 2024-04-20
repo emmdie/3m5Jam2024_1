@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_s4h8k")
 script = ExtResource("2_oqoan")
-left_icons = Array[Texture]([ExtResource("3_8mwmi"), ExtResource("4_78gno")])
+left_icons = Array[Texture]([ExtResource("4_78gno"), ExtResource("3_8mwmi")])
 up_icons = Array[Texture]([ExtResource("5_ymse3"), ExtResource("6_k4yav")])
 right_icons = Array[Texture]([ExtResource("7_w5i74"), ExtResource("8_uv12n")])
 
