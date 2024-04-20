@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt830od4yd2hv"]
+
+[ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_ygdfe"]
+
+[sub_resource type="GDScript" id="GDScript_062eb"]
+script/source = "extends MarginContainer
+
+@onready var input = preload(\"res://Scenes/Minigame/Inputs/input.tscn\")
+var possible_inputs = [\"l\",\"r\",\"u\",\"d\"]
+var current_inputs_position
+var inputs = []
+var input_amount = 4
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	_create_inputs()
+	current_inputs_position = 0
+
+func _create_inputs():
+	for n in input_amount:
+		var new_input_instance = input.instantiate()
+		$HBoxContainer.add_child(new_input_instance)
+		var input_value = possible_inputs.pick_random()
+		inputs.append(input_value)
+		new_input_instance.set_input_value(input_value)
+
+# returns true when the sequence was completed
+func _check_input(input_action):
+	print(current_inputs_position)
+	if current_inputs_position >= input_amount - 1:
+		if input_action == inputs[current_inputs_position]:
+			return true
+		else:
+			return false
+	else:
+		if input_action == inputs[current_inputs_position]:
+			current_inputs_position = current_inputs_position + 1
+		return false
+"
+
+[node name="InputSequence" type="MarginContainer"]
+custom_minimum_size = Vector2(222, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -6.0
+offset_right = 111.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_ygdfe")
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+script = SubResource("GDScript_062eb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
