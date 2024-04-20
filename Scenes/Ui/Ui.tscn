@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dplnr5q0eeebh"]
+[gd_scene load_steps=14 format=3 uid="uid://dplnr5q0eeebh"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_s4h8k"]
 [ext_resource type="Script" path="res://Scenes/Ui/TimerPanel.gd" id="2_ah4lv"]
 [ext_resource type="Script" path="res://Scenes/Ui/Ui.gd" id="2_oqoan"]
+[ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="3_8mwmi"]
 [ext_resource type="Script" path="res://Scenes/Ui/EnemyHealthPanel.gd" id="4_7tmcb"]
-[ext_resource type="PackedScene" uid="uid://c6i0ksc3jkqd2" path="res://Scenes/units/player_unit/fire_unit.tscn" id="4_c5rtr"]
+[ext_resource type="Texture2D" uid="uid://bk1q4dma8pw3g" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_left.png" id="4_78gno"]
 [ext_resource type="PackedScene" uid="uid://caext43hae4ho" path="res://Scenes/Ui/unit_preview.tscn" id="4_pivm6"]
 [ext_resource type="Texture2D" uid="uid://cj0ir602q6xec" path="res://Assets/Textures/Ui/Hud/sandwatch.png" id="5_imrn5"]
+[ext_resource type="Texture2D" uid="uid://5gxl5gwiw3bh" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_up.png" id="5_ymse3"]
+[ext_resource type="Texture2D" uid="uid://dsh37apcgajsd" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_up.png" id="6_k4yav"]
+[ext_resource type="Texture2D" uid="uid://dk41wfkgtvb57" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_right.png" id="7_w5i74"]
+[ext_resource type="Texture2D" uid="uid://dfsc1j4j5kvve" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_right.png" id="8_uv12n"]
 [ext_resource type="PackedScene" uid="uid://6gbjl3141qx2" path="res://Scenes/Ui/enemy_heart.tscn" id="8_yqrvq"]
 
 [node name="Ui" type="Control"]
@@ -18,7 +23,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_s4h8k")
 script = ExtResource("2_oqoan")
-fire_scene = ExtResource("4_c5rtr")
+left_icons = Array[Texture]([ExtResource("3_8mwmi"), ExtResource("4_78gno")])
+up_icons = Array[Texture]([ExtResource("5_ymse3"), ExtResource("6_k4yav")])
+right_icons = Array[Texture]([ExtResource("7_w5i74"), ExtResource("8_uv12n")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

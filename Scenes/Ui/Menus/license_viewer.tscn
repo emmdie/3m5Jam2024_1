@@ -31,7 +31,8 @@ layout_mode = 2
 
 [node name="Text" type="Label" parent="MarginContainer/TabContainer/Credits"]
 layout_mode = 2
-text = "Hourglass, Heart Shield icon by Delapouite under CC BY 3.0 from https://game-icons.net/1x1/delapouite/duration.html#download"
+text = "Hourglass, Heart Shield icon by Delapouite under CC BY 3.0 from https://game-icons.net/1x1/delapouite/duration.html#download
+Input Prompt Icons by Kenney under CC0 https://kenney.nl/assets/input-prompts#inline-download"
 
 [node name="OpenFontLicense1_1" type="ScrollContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
@@ -216,6 +217,26 @@ EXCEPT TO THE EXTENT REQUIRED BY APPLICABLE LAW, IN NO EVENT WILL LICENSOR BE LI
     No term or provision of this License shall be deemed waived and no breach consented to unless such waiver or consent shall be in writing and signed by the party to be charged with such waiver or consent.
     This License constitutes the entire agreement between the parties with respect to the Work licensed here. There are no understandings, agreements or representations with respect to the Work not specified here. Licensor shall not be bound by any additional provisions that may appear in any communication from You. This License may not be modified without the mutual written agreement of the Licensor and You.
     The rights granted under, and the subject matter referenced, in this License were drafted utilizing the terminology of the Berne Convention for the Protection of Literary and Artistic Works (as amended on September 28, 1979), the Rome Convention of 1961, the WIPO Copyright Treaty of 1996, the WIPO Performances and Phonograms Treaty of 1996 and the Universal Copyright Convention (as revised on July 24, 1971). These rights and subject matter take effect in the relevant jurisdiction in which the License terms are sought to be enforced according to the corresponding provisions of the implementation of those treaty provisions in the applicable national law. If the standard suite of rights granted under applicable copyright law includes additional rights not granted under this License, such additional rights are deemed to be included in the License; this License is not intended to restrict the license of any rights under applicable law.
+
+"
+
+[node name="CC0" type="ScrollContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Text" type="Label" parent="MarginContainer/TabContainer/CC0"]
+layout_mode = 2
+text = "
+No Copyright
+
+    The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.
+    You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission. See Other Information below.
+
+Other Information
+
+    In no way are the patent or trademark rights of any person affected by CC0, nor are the rights that other persons may have in the work or in how the work is used, such as publicity or privacy rights.
+    Unless expressly stated otherwise, the person who associated a work with this deed makes no warranties about the work, and disclaims liability for all uses of the work, to the fullest extent permitted by applicable law.
+    When using or citing the work, you should not imply endorsement by the author or the affirmer.
 
 "
 
