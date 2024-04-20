@@ -20,6 +20,10 @@ func summon() -> void:
 	behavior.change_state(UnitStateSummon.new())
 
 
+func cancle_summoning() -> void:
+	queue_free()
+
+
 func fight(has_won_fight: bool) -> void:
 	has_won = has_won_fight
 	behavior.change_state(UnitStateFight.new())

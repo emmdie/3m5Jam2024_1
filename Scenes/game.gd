@@ -113,6 +113,13 @@ func _input(event):
 		__select(1)
 	elif event.is_action_pressed("select_2"):
 		__select(2)
+	elif event.is_action_released("summon_lane_0"):
+		__cancle_summon(0)
+	elif event.is_action_released("summon_lane_1"):
+		__cancle_summon(1)
+	elif event.is_action_released("summon_lane_2"):
+		__cancle_summon(2)
+		
 
 
 func __check_win_loose():
@@ -128,18 +135,37 @@ func __select(id: int):
 	GameState.selected_unit.value = id
 
 
+var summoning_unit: Unit
+var summoning_id: int
+
+
 func __summon_on_lane(id: int):
 	if GameState.selected_unit.value >= len(GameState.unit_stash.value):
 		return
+	if summoning_unit:
+		return
 	
 	var unit: Unit = GameState.unit_stash.value[GameState.selected_unit.value].instantiate()
-	GameState.unit_stash.value.remove_at(GameState.selected_unit.value)
-	GameState.unit_stash.changed.emit()
-	__check_add_unit()
+	summoning_unit = unit
+	summoning_id = id
 	
 	var lane = lanes[id]
 	unit.set_lane(lane)
 	unit.summon()
+	unit.finished_animation.connect(__on_finished_summoning)
+func __on_finished_summoning() -> void:
+	GameState.unit_stash.value.remove_at(GameState.selected_unit.value)
+	GameState.unit_stash.changed.emit()
+	__check_add_unit()
+	summoning_unit = null
+
+
+func __cancle_summon(id: int):
+	if not summoning_unit or id != summoning_id:
+		return
+	summoning_unit.cancle_summoning()
+	summoning_unit = null
+
 
 func __animate_warning_appear():
 	if switch_warning_1:
