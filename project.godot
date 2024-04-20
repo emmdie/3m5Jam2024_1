@@ -13,6 +13,7 @@ config_version=5
 config/name="Game Jam Template"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.227451, 0.219608, 0.345098, 1)
 config/icon="res://Assets/Textures/icon.svg"
 
 [autoload]
@@ -27,6 +28,10 @@ window/size/viewport_height=1080
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/htk_game_state/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://Assets/Fonts/Rosarivo-Regular.ttf"
 
 [input]
 
@@ -89,3 +94,7 @@ select_2={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":76,"key_label":0,"unicode":108,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.207843, 0.168627, 0.258824, 1)

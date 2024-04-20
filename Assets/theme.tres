@@ -1,6 +1,17 @@
-[gd_resource type="Theme" format=3 uid="uid://d2lh3hpldd764"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d2lh3hpldd764"]
+
+[ext_resource type="FontFile" uid="uid://cqn2ulq1n40q4" path="res://Assets/Fonts/Rosarivo-Regular.ttf" id="1_8xd5a"]
 
 [resource]
+default_font = ExtResource("1_8xd5a")
+default_font_size = 18
+Button/colors/font_color = Color(0.94902, 0.941176, 0.898039, 1)
+Button/colors/icon_hover_color = Color(0.227451, 0.219608, 0.345098, 1)
+Button/colors/icon_hover_pressed_color = Color(0.207843, 0.168627, 0.258824, 1)
+Button/colors/icon_normal_color = Color(0.129412, 0.129412, 0.137255, 1)
+Button/colors/icon_pressed_color = Color(0.721569, 0.709804, 0.72549, 1)
+Label/colors/font_color = Color(0.94902, 0.941176, 0.898039, 1)
+Label/colors/font_outline_color = Color(0.129412, 0.129412, 0.137255, 1)
 MarginContainer/constants/margin_bottom = 30
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30

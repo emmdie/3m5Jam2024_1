@@ -41,6 +41,7 @@ size_flags_stretch_ratio = 19.04
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
+theme = ExtResource("1_8w3v2")
 text = "Play"
 
 [node name="SettingsButton" type="Button" parent="ButtonMarginContainer/HBoxContainer/VBoxContainer"]
