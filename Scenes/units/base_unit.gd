@@ -10,3 +10,4 @@ var current_lane: Lane
 
 func set_lane(lane: Lane) -> void:
 	current_lane = lane
+	current_lane.add_child()
