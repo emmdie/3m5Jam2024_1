@@ -1,10 +1,11 @@
 @tool
 extends GameStateBase
 
-
 # Some example variable.
 var highscore := Value.new(0)
 
+
+var rules := GameRules.new()
 
 # Override this to change the path under which the state is saved.
 func _get_file_path():
