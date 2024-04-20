@@ -1,0 +1,138 @@
+[gd_scene load_steps=4 format=3 uid="uid://dplnr5q0eeebh"]
+
+[ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_s4h8k"]
+[ext_resource type="Script" path="res://Scenes/Ui/TimerPanel.gd" id="2_ah4lv"]
+[ext_resource type="Texture2D" uid="uid://c5cjks2qwl140" path="res://Assets/Textures/icon.svg" id="2_f8oex"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s4h8k")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_s4h8k")
+
+[node name="Label3" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 100
+text = "MiniGame"
+
+[node name="TimerPanel" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+script = ExtResource("2_ah4lv")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/TimerPanel"]
+layout_mode = 2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="MarginContainer/TimerPanel/CenterContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.0
+value = 0.3
+fill_mode = 4
+texture_progress = ExtResource("2_f8oex")
+
+[node name="Label" type="Label" parent="MarginContainer/TimerPanel/CenterContainer"]
+layout_mode = 2
+text = "60"
+
+[node name="UnitPreviewPanel" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UnitPreviewPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="UnitPreview1" type="PanelContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview1/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(180, 180)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview1/SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_f8oex")
+
+[node name="HotkeyDisplay" type="Label" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview1"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "A"
+
+[node name="UnitPreview2" type="PanelContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview2/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(180, 180)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview2/SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_f8oex")
+
+[node name="HotkeyDisplay" type="Label" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "S"
+
+[node name="UnitPreview3" type="PanelContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview3/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(180, 180)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview3/SubViewportContainer/SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_f8oex")
+
+[node name="HotkeyDisplay3" type="Label" parent="MarginContainer/UnitPreviewPanel/MarginContainer/HBoxContainer/UnitPreview3"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "D
+"
