@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1gvpfgpshaan"]
+
+[ext_resource type="PackedScene" uid="uid://cv30t4gp01jf5" path="res://Scenes/units/player_unit/unit.tscn" id="1_rkva2"]
+
+[node name="PlantUnit" instance=ExtResource("1_rkva2")]
+element = 2

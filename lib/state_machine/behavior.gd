@@ -11,6 +11,7 @@ var current_state: State = State.new()
 
 
 func _ready() -> void:
+	current_state.behavior = self
 	change_state(start_state.new())
 
 

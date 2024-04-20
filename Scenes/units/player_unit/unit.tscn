@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv30t4gp01jf5"]
+
+[ext_resource type="Script" path="res://Scenes/units/player_unit/unit.gd" id="1_fmym1"]
+[ext_resource type="Script" path="res://lib/state_machine/behavior.gd" id="2_r12cd"]
+[ext_resource type="Script" path="res://Scenes/units/player_unit/state_idle.gd" id="3_87qbl"]
+
+[node name="Unit" type="Node3D" node_paths=PackedStringArray("behavior")]
+script = ExtResource("1_fmym1")
+behavior = NodePath("Behavior")
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("unit")]
+script = ExtResource("2_r12cd")
+unit = NodePath("..")
+start_state = ExtResource("3_87qbl")

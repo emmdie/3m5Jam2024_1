@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1d68o0jkoa3l"]
+
+[ext_resource type="PackedScene" uid="uid://cv30t4gp01jf5" path="res://Scenes/units/player_unit/unit.tscn" id="1_iytif"]
+
+[node name="WaterUnit" instance=ExtResource("1_iytif")]
+element = 1
