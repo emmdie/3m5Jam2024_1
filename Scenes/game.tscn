@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c8jkhdwbodrc3" path="res://Scenes/Ui/Hud.tscn" id="3_cfnx0"]
 [ext_resource type="Environment" uid="uid://ciw1fp1212j6p" path="res://Scenes/env.tres" id="4_3pejh"]
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("menu")]
 script = ExtResource("1_50n6b")
+menu = NodePath("Control")
 
 [node name="3m5jam11" parent="." instance=ExtResource("2_8xq6q")]
 
@@ -24,8 +25,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 20, 17)
-fov = 40.0
+transform = Transform3D(1, 0, 0, 0, 0.825901, 0.563815, 0, -0.563815, 0.825901, 0, 15.9946, 27.4579)
+fov = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_3pejh")
@@ -42,8 +43,8 @@ shadow_opacity = 0.8
 omni_range = 100.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.659913, -0.49564, -0.564673, -0.18693, -0.836228, 0.515539, -0.727717, -0.234656, -0.644488, 0, 11.4597, -0.746603)
+transform = Transform3D(-0.780802, 0.00654079, -0.624745, -0.582176, -0.370542, 0.72372, -0.22676, 0.928793, 0.293128, 0, 11.4597, 16.8325)
 light_energy = 0.5
 shadow_enabled = true
-shadow_opacity = 0.8
+shadow_opacity = 0.5
 shadow_blur = 3.0
