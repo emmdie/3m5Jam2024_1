@@ -24,13 +24,13 @@ func _ready():
 	current_sequence_position = 0
 
 func _process(delta):
-	if Input.is_action_pressed("minigame_Left"):
+	if Input.is_action_just_pressed("minigame_Left"):
 		_check_input("minigame_Left")
-	if Input.is_action_pressed("minigame_Right"):
+	if Input.is_action_just_pressed("minigame_Right"):
 		_check_input("minigame_Right")
-	if Input.is_action_pressed("minigame_Down"):
+	if Input.is_action_just_pressed("minigame_Down"):
 		_check_input("minigame_Down")
-	if Input.is_action_pressed("minigame_Up"):
+	if Input.is_action_just_pressed("minigame_Up"):
 		_check_input("minigame_Up")
 
 func _check_input(event):
