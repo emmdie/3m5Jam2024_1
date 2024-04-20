@@ -179,31 +179,31 @@ func __check_add_unit():
 
 func __on_fight(unit: Unit):
 	var tower_queue = tower_queues[0]
+	var current_lane: Lane = unit.current_lane
 	var i = 1
-	while i < len(tower_queues) and tower_queue.lane != unit.current_lane:
+	while i < len(tower_queues) and tower_queue.lane != current_lane:
 		tower_queue = tower_queues[i]
 		i += 1
 	
-	var win := __rock_paper_siccsor(unit.element, tower_queue.towers[0].element)
+
+	var current_tower: Tower = tower_queue.pop()
+	
+	var win := __rock_paper_siccsor(unit.element,	current_tower.element)
 	
 	if win:
 		GameState.enemy_health.value -= 1
 	else:
 		GameState.player_health.value -= 1
 	
-	tower_queue.first.finished_animation.connect(__on_animate_tower_shift.bind(tower_queue), CONNECT_ONE_SHOT)
-	tower_queue.first.fight(not win)
+	current_tower.fight(not win)
 	unit.fight(win)
+	# await current_tower.tower_destroyed
 	
+	var new_tower: Tower = tower_queue.first
 	# Shift the tower queue state
-	tower_holder.add_child(tower_queue.towers[1])
-	tower_queue.pop()
+	tower_holder.add_child(new_tower)
+	new_tower.place(current_lane)
 	tower_queue.push(Tower.instantiate(BaseUnit.pick_element()))
-
-
-func __on_animate_tower_shift(tower_queue: TowerQueue):
-	#tower_queue.first.build()
-	pass
 
 
 func __on_tower_switch():
