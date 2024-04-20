@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8jkhdwbodrc3"]
+
+[ext_resource type="PackedScene" uid="uid://dplnr5q0eeebh" path="res://Scenes/Ui/Ui.tscn" id="1_s5qow"]
+
+[node name="Control" type="SubViewportContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Ui" parent="SubViewport" instance=ExtResource("1_s5qow")]
