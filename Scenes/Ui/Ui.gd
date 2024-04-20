@@ -6,6 +6,12 @@ extends Control
 @onready var previews = [preview1, preview2, preview3]
 
 @export var fire_scene: PackedScene
+
+func _ready() -> void:
+	GameState.unit_stash.changed.connect(update_preview)
+	
 func update_preview():
-	for preview in previews:
-		pass
+	for i in GameState.unit_stash.value.size():
+		var unit = GameState.unit_stash.value[i].instantiate()
+		previews[i].set_unit(unit)
+		
