@@ -97,7 +97,6 @@ class Value extends Serializable:
 	var default_value: Variant
 	var serialized: bool
 
-
 	func _init(p_value: Variant, p_serialized: bool = true) -> void:
 		default_value = p_value
 		value = p_value

@@ -1,23 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4d7ecqlohxt"]
+[gd_scene load_steps=3 format=3 uid="uid://d4d7ecqlohxt"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_50n6b"]
 [ext_resource type="PackedScene" uid="uid://65w17xmk8mqq" path="res://Scenes/lane.tscn" id="1_peffo"]
-[ext_resource type="PackedScene" uid="uid://ctfk4brlgutyo" path="res://Scenes/units/tower/plant.tscn" id="1_qb83d"]
-[ext_resource type="PackedScene" uid="uid://egfoiv6ftl" path="res://Scenes/units/tower/water.tscn" id="2_blfhh"]
-[ext_resource type="PackedScene" uid="uid://cqhediecnloxu" path="res://Scenes/units/tower/fire.tscn" id="2_rrh3n"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_50n6b")
 
 [node name="Towers" type="Node3D" parent="."]
-
-[node name="Tower" parent="Towers" instance=ExtResource("1_qb83d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
-
-[node name="Tower2" parent="Towers" instance=ExtResource("2_blfhh")]
-
-[node name="Tower3" parent="Towers" instance=ExtResource("2_rrh3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
 
 [node name="Lanes" type="Node3D" parent="."]
 
