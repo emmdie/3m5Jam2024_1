@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4d7ecqlohxt"]
+[gd_scene load_steps=6 format=3 uid="uid://d4d7ecqlohxt"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_50n6b"]
 [ext_resource type="PackedScene" uid="uid://65w17xmk8mqq" path="res://Scenes/lane.tscn" id="1_peffo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_07nas"]
+
+[sub_resource type="Sky" id="Sky_lk2pr"]
+sky_material = SubResource("ProceduralSkyMaterial_07nas")
+
+[sub_resource type="Environment" id="Environment_bt6cj"]
+background_mode = 2
+sky = SubResource("Sky_lk2pr")
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_50n6b")
@@ -19,7 +28,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.75261, 0.658466, 0, -0.658466, 0.75261, 0, 3.54834, 6.19382)
+transform = Transform3D(1, 0, 0, 0, 0.819112, 0.573634, 0, -0.573634, 0.819112, 0, 3.54954, 5.66851)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0157248, 0.999876, 0, -0.999876, 0.0157248, 0, 5.26391, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bt6cj")
