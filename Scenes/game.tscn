@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4d7ecqlohxt"]
+
+[ext_resource type="PackedScene" uid="uid://65w17xmk8mqq" path="res://Scenes/lane.tscn" id="1_peffo"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Lanes" type="Node3D" parent="."]
+
+[node name="Lane" parent="Lanes" instance=ExtResource("1_peffo")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.920321, 0.391165, 0, -0.391165, 0.920321, 0, 2.98354, 5.32061)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0157248, 0.999876, 0, -0.999876, 0.0157248, 0, 5.26391, 0)
