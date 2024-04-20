@@ -1,8 +1,8 @@
 class_name Tower
 extends BaseUnit
 
-func fight(win: bool):
-	queue_free()
+signal tower_destroyed
+
 
 func set_lane(lane: Lane) -> void:
 	current_lane = lane
@@ -26,3 +26,8 @@ func switch_lane(lane: Lane) -> void:
 	set_lane(lane)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", lane.global_position, 0.2)
+
+
+func fight(_has_won_fight: bool) -> void:
+	tower_destroyed.emit()
+	queue_free()

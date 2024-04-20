@@ -12,6 +12,9 @@ sky_material = SubResource("ProceduralSkyMaterial_07nas")
 [sub_resource type="Environment" id="Environment_bt6cj"]
 background_mode = 2
 sky = SubResource("Sky_lk2pr")
+ambient_light_source = 1
+glow_enabled = true
+glow_intensity = 8.0
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_50n6b")
