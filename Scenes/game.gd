@@ -1,6 +1,7 @@
 extends Node3D
 
 
+
 class TowerQueue:
 	var lane: Lane
 	var first: Tower:
@@ -35,6 +36,9 @@ const UNITS := [
 
 const SwitchWarning := preload("res://Scenes/switch_warning.tscn")
 
+@export var menu: Control
+
+
 @onready var lanes: Array[Lane] = [
 	$Lanes/Lane1,
 	$Lanes/Lane2,
@@ -51,9 +55,22 @@ var switch_warning_2: Node3D
 
 func _ready():
 	$Camera3D.make_current()
+	var tween: Tween = create_tween()
+	set_process_input(false)
+	menu.hide()
+
+	tween.tween_property($Camera3D, "position:z", $Camera3D.position.z, 2.0).from($Camera3D.position.z + 10).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.parallel()
+	tween.tween_property($Camera3D, "rotation_degrees:x", $Camera3D.rotation_degrees.x, 2.0).from($Camera3D.rotation_degrees.x + 40).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_callback(game_start)
+
+
+func game_start() ->void:
+	set_process_input(true)
+	menu.show()
+
 	GameState.mana.changed.connect(__on_mana_changed)
 	randomize()
-	
 	GameState.player_health.changed.connect(__check_win_loose)
 	GameState.enemy_health.changed.connect(__check_win_loose)
 	
