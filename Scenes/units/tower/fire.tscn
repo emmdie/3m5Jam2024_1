@@ -1,13 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqhediecnloxu"]
 
 [ext_resource type="PackedScene" uid="uid://ckga2ynp7lmds" path="res://Scenes/units/tower/tower.tscn" id="1_gnoo5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nura"]
-albedo_color = Color(0.835067, 0.253091, 0.247173, 1)
+[ext_resource type="PackedScene" uid="uid://cyu2ql63gnts1" path="res://Assets/3d_objects/firedoor.glb" id="2_df2u1"]
 
 [node name="Tower" instance=ExtResource("1_gnoo5")]
 
-[node name="Tower" type="CSGBox3D" parent="CSGBox3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502854, 0)
-size = Vector3(0.8, 1.04184, 0.8)
-material = SubResource("StandardMaterial3D_8nura")
+[node name="firedoor" parent="." index="0" instance=ExtResource("2_df2u1")]

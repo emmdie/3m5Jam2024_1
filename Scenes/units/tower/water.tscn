@@ -1,14 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://egfoiv6ftl"]
 
 [ext_resource type="PackedScene" uid="uid://ckga2ynp7lmds" path="res://Scenes/units/tower/tower.tscn" id="1_uqmxn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqdwb"]
-albedo_color = Color(0.369612, 0.468394, 0.789859, 1)
+[ext_resource type="PackedScene" uid="uid://dojb5vd4nidan" path="res://Assets/3d_objects/waterdoor.glb" id="2_ydvhi"]
 
 [node name="Tower" instance=ExtResource("1_uqmxn")]
 element = 1
 
-[node name="Tower" type="CSGBox3D" parent="CSGBox3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502854, 0)
-size = Vector3(0.8, 1.04184, 0.8)
-material = SubResource("StandardMaterial3D_dqdwb")
+[node name="waterdoor" parent="." index="0" instance=ExtResource("2_ydvhi")]
