@@ -4,7 +4,6 @@ extends State
 
 func start() -> void:
 	var unit: Unit = behavior.unit
-	unit.current_lane.add_child(unit)
 	unit.position.z = unit.current_lane.lange_length
 	start_move()
 

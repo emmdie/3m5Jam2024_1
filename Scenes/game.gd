@@ -102,6 +102,12 @@ func _ready():
 	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[1])
 	unit.summon()
+	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
+	unit.set_lane(lanes[2])
+	unit.summon()
+	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
+	unit.set_lane(lanes[0])
+	unit.summon()
 
 
 func __on_fight(unit: Unit):

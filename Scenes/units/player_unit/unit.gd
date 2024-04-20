@@ -8,13 +8,12 @@ extends BaseUnit
 
 var has_won: bool = false
 
-func set_lane(lane: Lane) -> void:
-	super(lane)
 
 func summon() -> void:
 	preview_cam.clear_current()
 	preview_spot_light.hide()
 	preview_kick_light.hide()
+	current_lane.add_child(self)
 	behavior.change_state(UnitStateSummon.new())
 
 

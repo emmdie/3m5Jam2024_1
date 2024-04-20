@@ -4,7 +4,11 @@
 
 [node name="Lane" type="Node3D"]
 script = ExtResource("1_ei8c4")
+lange_length = 10.0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 2)
-size = Vector3(1, 0.4, 4)
+[node name="TowerPlace" type="Marker3D" parent="."]
+gizmo_extents = 1.0
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+gizmo_extents = 1.0

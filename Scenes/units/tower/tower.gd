@@ -17,6 +17,7 @@ static func instantiate(type: Elements) -> Tower:
 func place(lane: Lane) -> void:
 	set_lane(lane)
 	global_position = lane.global_position
+	
 
 func switch_lane(lane: Lane) -> void:
 	set_lane(lane)

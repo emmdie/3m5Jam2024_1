@@ -20,16 +20,16 @@ script = ExtResource("1_50n6b")
 [node name="Lanes" type="Node3D" parent="."]
 
 [node name="Lane1" parent="Lanes" instance=ExtResource("1_peffo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 
 [node name="Lane2" parent="Lanes" instance=ExtResource("1_peffo")]
 
 [node name="Lane3" parent="Lanes" instance=ExtResource("1_peffo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.819112, 0.573634, 0, -0.573634, 0.819112, 0, 3.54954, 5.66851)
-current = true
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 20, 17)
+fov = 40.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0157248, 0.999876, 0, -0.999876, 0.0157248, 0, 5.26391, 0)
