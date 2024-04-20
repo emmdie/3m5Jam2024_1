@@ -12,6 +12,7 @@ var enemy_health := Value.new(rules.enemy_max_health, false)
 var mana := Value.new(rules.player_max_mana, false)
 
 var unit_stash := Value.new([], false)
+var selected_unit := Value.new(0, false)
 
 var time_to_tower_change: float:
 	get:
