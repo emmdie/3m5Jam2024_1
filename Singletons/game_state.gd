@@ -3,7 +3,7 @@ extends GameStateBase
 
 # Some example variable.
 var highscore := Value.new(0)
-
+var time_to_tower_change: float = 1
 
 var rules := GameRules.new()
 
