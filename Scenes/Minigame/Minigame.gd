@@ -29,7 +29,7 @@ func _process(delta):
 		_check_input("minigame_Up")
 
 func _check_input(event):
-	print(event)
+	#print(event)
 	if sequences[current_sequence_position]._check_input(pressed_key_mapping[event]):
 		_set_mana(game_state.mana.value + 1)
 		sequences[current_sequence_position].queue_free()
@@ -38,7 +38,7 @@ func _check_input(event):
 			current_sequence_position = 0
 		else:
 			current_sequence_position = current_sequence_position + 1
-		print("current_inputs_position " + str(current_sequence_position))
+		#print("current_inputs_position " + str(current_sequence_position))
 
 func _set_mana(new_value):
 	if new_value <= game_state.rules.player_max_mana:
