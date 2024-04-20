@@ -13,7 +13,8 @@ func _ready() -> void:
 func update_preview():
 	var stash_size = GameState.unit_stash.value.size()
 	for i in previews.size():
-		if i >stash_size:
+		print("unit preview Nr. "+str(i))
+		if i >=stash_size:
 			previews[i].clear()
 		else:
 			var unit = GameState.unit_stash.value[i].instantiate()
