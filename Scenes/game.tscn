@@ -1,23 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4d7ecqlohxt"]
+[gd_scene load_steps=6 format=3 uid="uid://d4d7ecqlohxt"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_50n6b"]
 [ext_resource type="PackedScene" uid="uid://65w17xmk8mqq" path="res://Scenes/lane.tscn" id="1_peffo"]
+[ext_resource type="PackedScene" uid="uid://cg5sgp5q3bsfb" path="res://Assets/3d_objects/3m5jam11.glb" id="2_8xq6q"]
 [ext_resource type="PackedScene" uid="uid://c8jkhdwbodrc3" path="res://Scenes/Ui/Hud.tscn" id="3_cfnx0"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_07nas"]
-
-[sub_resource type="Sky" id="Sky_lk2pr"]
-sky_material = SubResource("ProceduralSkyMaterial_07nas")
-
-[sub_resource type="Environment" id="Environment_bt6cj"]
-background_mode = 2
-sky = SubResource("Sky_lk2pr")
-ambient_light_source = 1
-glow_enabled = true
-glow_intensity = 8.0
+[ext_resource type="Environment" uid="uid://ciw1fp1212j6p" path="res://Scenes/env.tres" id="4_3pejh"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_50n6b")
+
+[node name="3m5jam11" parent="." instance=ExtResource("2_8xq6q")]
 
 [node name="Towers" type="Node3D" parent="."]
 
@@ -35,10 +27,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 20, 17)
 fov = 40.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0157248, 0.999876, 0, -0.999876, 0.0157248, 0, 5.26391, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bt6cj")
+environment = ExtResource("4_3pejh")
 
 [node name="Control" parent="." instance=ExtResource("3_cfnx0")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404753, 17.8933, -19.0339)
+visible = false
+light_energy = 15.0
+shadow_enabled = true
+shadow_bias = 0.4
+shadow_opacity = 0.8
+omni_range = 100.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.659913, -0.49564, -0.564673, -0.18693, -0.836228, 0.515539, -0.727717, -0.234656, -0.644488, 0, 11.4597, -0.746603)
+light_energy = 0.5
+shadow_enabled = true
+shadow_opacity = 0.8
+shadow_blur = 3.0
