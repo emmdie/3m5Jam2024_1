@@ -1,6 +1,9 @@
 class_name Tower
 extends BaseUnit
 
+func fight(win: bool):
+	queue_free()
+
 func set_lane(lane: Lane) -> void:
 	current_lane = lane
 
