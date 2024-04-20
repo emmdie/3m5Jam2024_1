@@ -5,7 +5,6 @@ var rules := GameRules.new()
 
 # Some example variable.
 var highscore := Value.new(0)
-
 var player_health := Value.new(rules.player_max_health)
 var enemy_health := Value.new(rules.enemy_max_health)
 
