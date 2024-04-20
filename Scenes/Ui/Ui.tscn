@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dsh37apcgajsd" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_up.png" id="6_k4yav"]
 [ext_resource type="Texture2D" uid="uid://dk41wfkgtvb57" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_right.png" id="7_w5i74"]
 [ext_resource type="Texture2D" uid="uid://dfsc1j4j5kvve" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_right.png" id="8_uv12n"]
-[ext_resource type="PackedScene" uid="uid://6gbjl3141qx2" path="res://Scenes/Ui/enemy_heart.tscn" id="8_yqrvq"]
+[ext_resource type="PackedScene" uid="uid://4c3pxi0c24in" path="res://Scenes/Ui/enemy_heart.tscn" id="8_yqrvq"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -90,66 +90,6 @@ heart_scene = ExtResource("8_yqrvq")
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/EnemyHealthPanel"]
 layout_mode = 2
 columns = 10
-
-[node name="EnemyHeart" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart2" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart3" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart4" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart5" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart6" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart7" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart8" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart9" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart10" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart11" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart12" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart13" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart14" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart15" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart16" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart17" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart18" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart19" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
-
-[node name="EnemyHeart20" parent="MarginContainer/EnemyHealthPanel/GridContainer" instance=ExtResource("8_yqrvq")]
-layout_mode = 2
 
 [node name="PlayerHealthPanel" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
