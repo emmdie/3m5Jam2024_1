@@ -110,9 +110,11 @@ func game_start() ->void:
 	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[1])
 	unit.summon()
+	await get_tree().create_timer(0.1).timeout
 	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[2])
 	unit.summon()
+	await get_tree().create_timer(0.1).timeout
 	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[0])
 	unit.summon()
@@ -227,14 +229,14 @@ func __on_fight(unit: Unit):
 	while i < len(tower_queues) and tower_queue.lane != current_lane:
 		tower_queue = tower_queues[i]
 		i += 1
-	
 
 	var current_tower: Tower = tower_queue.pop()
 	
 	var win := __rock_paper_siccsor(unit.element,	current_tower.element)
-	
+	print("Win: ", win)
 	if win:
 		GameState.enemy_health.value -= 1
+		GameState.destroy_enemy.emit($Camera3D.unproject_position(unit.global_position))
 	else:
 		GameState.player_health.value -= 1
 	
