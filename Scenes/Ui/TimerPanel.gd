@@ -5,7 +5,7 @@ extends PanelContainer
 func _ready() -> void:
 	texture_bar.max_value = GameState.rules.tower_switch_time
 	
-func _process(delta):
+func _process(_delta):
 	update_time()
 
 func update_time():

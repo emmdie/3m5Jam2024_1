@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://6gbjl3141qx2"]
+
+[ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_3tj85"]
+[ext_resource type="Texture2D" uid="uid://bsoia255315sv" path="res://Assets/Textures/Ui/Hud/heart-shield.png" id="1_vlto0"]
+[ext_resource type="Script" path="res://Scenes/Ui/enemy_heart.gd" id="2_kgy70"]
+
+[sub_resource type="Animation" id="Animation_n1qv4"]
+resource_name = "pulsate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(36, 36), Vector2(44, 44), Vector2(36, 36), Vector2(44, 44)]
+}
+
+[sub_resource type="Animation" id="Animation_m2ceu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 36)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pxt4c"]
+_data = {
+"RESET": SubResource("Animation_m2ceu"),
+"pulsate": SubResource("Animation_n1qv4")
+}
+
+[node name="EnemyHeart" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_3tj85")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("2_kgy70")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Texture" type="TextureRect" parent="Node2D"]
+custom_minimum_size = Vector2(36, 36)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_vlto0")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Texture"]
+libraries = {
+"": SubResource("AnimationLibrary_pxt4c")
+}
+autoplay = "pulsate"
+
+[node name="Spacer" type="Control" parent="."]
+custom_minimum_size = Vector2(44, 44)
+layout_mode = 2
+
+[connection signal="animation_finished" from="Node2D/Texture/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

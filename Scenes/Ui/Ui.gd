@@ -11,7 +11,11 @@ func _ready() -> void:
 	GameState.unit_stash.changed.connect(update_preview)
 	
 func update_preview():
-	for i in GameState.unit_stash.value.size():
-		var unit = GameState.unit_stash.value[i].instantiate()
-		previews[i].set_unit(unit)
+	var stash_size = GameState.unit_stash.value.size()
+	for i in previews.size():
+		if i >stash_size:
+			previews[i].clear()
+		else:
+			var unit = GameState.unit_stash.value[i].instantiate()
+			previews[i].set_unit(unit)
 		
