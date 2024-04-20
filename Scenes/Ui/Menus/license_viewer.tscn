@@ -32,10 +32,14 @@ layout_mode = 2
 [node name="Text" type="Label" parent="MarginContainer/TabContainer/Credits"]
 layout_mode = 2
 text = "Hourglass, Heart Shield icon by Delapouite under CC BY 3.0 from https://game-icons.net/1x1/delapouite/duration.html#download
+<<<<<<< HEAD
 Input Prompt Icons by Kenney under CC0 https://kenney.nl/assets/input-prompts#inline-download
 CC-29 PALETTE by Alpha6 https://lospec.com/palette-list/cc-29
 Rosarivo font by Pablo Ugerman under Open Font License https://fonts.google.com/specimen/Rosarivo   
 Door icon by Lorc under CC BY 3.0 https://game-icons.net/1x1/lorc/doorway.html#download"
+=======
+Input Prompt Icons by Kenney under CC0 https://kenney.nl/assets/input-prompts#inline-download"
+>>>>>>> 151e09c (add ui input prompts for preview)
 
 [node name="OpenFontLicense1_1" type="ScrollContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2

@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scenes/Ui/Ui.gd" id="2_oqoan"]
 [ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="3_8mwmi"]
 [ext_resource type="PackedScene" uid="uid://bxebpofejftxv" path="res://Scenes/Minigame/minigame.tscn" id="4_3up0a"]
+[ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="3_8mwmi"]
 [ext_resource type="Script" path="res://Scenes/Ui/EnemyHealthPanel.gd" id="4_7tmcb"]
 [ext_resource type="Texture2D" uid="uid://bk1q4dma8pw3g" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_left.png" id="4_78gno"]
 [ext_resource type="PackedScene" uid="uid://caext43hae4ho" path="res://Scenes/Ui/unit_preview.tscn" id="4_pivm6"]
@@ -16,6 +17,7 @@
 [ext_resource type="Script" path="res://Scenes/Ui/Manabar.gd" id="14_8bmil"]
 [ext_resource type="Script" path="res://Scenes/Ui/PlayerHealthPanel.gd" id="14_h6d2s"]
 [ext_resource type="Texture2D" uid="uid://bgon7lm5j5li" path="res://Assets/Textures/Ui/Hud/galaxy.png" id="15_rh864"]
+[ext_resource type="PackedScene" uid="uid://6gbjl3141qx2" path="res://Scenes/Ui/enemy_heart.tscn" id="8_yqrvq"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
