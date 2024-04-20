@@ -68,6 +68,7 @@ func __animate_warning_disappear():
 func _ready():
 	randomize()
 	
+	
 	switch_warning_1 = SwitchWarning.instantiate()
 	switch_warning_2 = SwitchWarning.instantiate()
 	add_child(switch_warning_1)
@@ -95,6 +96,9 @@ func _ready():
 		
 		tower_queues.append(queue)
 
+	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
+	unit.set_lane(lanes[1])
+	unit.summon()
 
 func __on_tower_switch():
 	var tq1: TowerQueue

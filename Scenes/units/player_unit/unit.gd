@@ -2,7 +2,7 @@ class_name Unit
 extends BaseUnit
 
 @export var behavior: Behavior
-@export var preview_cam: Camera2D
+@export var preview_cam: Camera3D
 @export var preview_spot_light: SpotLight3D
 @export var preview_kick_light: SpotLight3D
 
