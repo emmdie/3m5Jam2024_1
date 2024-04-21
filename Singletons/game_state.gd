@@ -22,8 +22,7 @@ var time_to_tower_change: float:
 		return tower_switch_timer.time_left if tower_switch_timer else 0.0
 var tower_switch_timer: Timer
 
-enum INPUT {KEYBOARD, CONTROLLER}
-var input_mode = Value.new(INPUT.KEYBOARD, false)
+var input_mode := Value.new(0, false) #0 = CONTROLLER, 1 = KEYBOARD
 
 func restart():
 	unit_stash.value = []
@@ -49,9 +48,11 @@ func _get_auto_save_load():
 	return true
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		input_mode = INPUT.CONTROLLER
-		#print("CONTROLLER")
+	if Engine.is_editor_hint():
+		return
+	if event is InputEventKey or event is InputEventMouse:
+		if input_mode.value != 1:
+			input_mode.value = 1
 	else:
-		input_mode = INPUT.KEYBOARD
-		#print("KEYBBBBBB")
+		if input_mode.value != 0:
+			input_mode.value = 0
