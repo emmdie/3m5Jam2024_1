@@ -118,6 +118,8 @@ func _start_action() ->void:
 	GameState.unit_reached_tower.connect(__on_fight)
 	
 	switches.append(SwitchTowerDef.new(lanes))
+	
+	$Lanes.show()
 
 	
 	
@@ -135,7 +137,8 @@ func _start_action() ->void:
 		queue.push(tower)
 		
 		tower_queues.append(queue)
-		
+	
+	"""
 	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[1])
 	unit.summon()
@@ -147,6 +150,7 @@ func _start_action() ->void:
 	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[0])
 	unit.summon()
+	"""
 	
 	__animate_warning_appear()
 
