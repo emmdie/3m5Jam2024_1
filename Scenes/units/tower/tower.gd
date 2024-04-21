@@ -16,17 +16,17 @@ func _ready():
 
 func start_pulse():
 	if tween:
-		tween.stop()
+		tween.kill()
 	if is_inside_tree():
-		tween = get_tree().create_tween().set_loops()
+		tween = get_tree().create_tween().set_loops().bind_node($Sprite3D)
 		tween.tween_property($Sprite3D, "pixel_size", max_pixel_size * 0.8, 0.2)
 		tween.tween_property($Sprite3D, "pixel_size", max_pixel_size, 0.2)
 	return
 
 func stop_pulse():
 	if tween:
-		tween.stop()
-	tween = get_tree().create_tween()
+		tween.kill()
+	tween = get_tree().create_tween().bind_node($Sprite3D)
 	tween.tween_property(sprite, "pixel_size", max_pixel_size, 0.2)
 
 func set_lane(lane: Lane) -> void:
