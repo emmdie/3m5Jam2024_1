@@ -28,6 +28,7 @@ func _restart() -> void:
 	var new_game: Game = preload("res://Scenes/game.tscn").instantiate()
 	current_game_scene.queue_free()
 	current_game_scene = new_game
+	current_game_scene.sound_manager = sound_manager
 	_connect_current_game_scene()
 	add_child(new_game)
 	new_game.start_game()
@@ -35,10 +36,12 @@ func _restart() -> void:
 	lose_menu.hide()
 
 func _game_won() -> void:
+	current_game_scene.set_process_input(false)
 	win_menu.show()
 
 func _game_lost() -> void:
-	lose_menu.hide()
+	current_game_scene.set_process_input(false)
+	lose_menu.show()
 
 
 func _on_exit_pressed() -> void:

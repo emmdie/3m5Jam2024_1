@@ -63,7 +63,7 @@ func _start_new_track(new_track: AudioStreamPlayer) -> void:
 	tween.tween_callback(
 		func() -> void:
 			current_track.stop()
-			new_track.start()
+			new_track.play()
 			new_track.volume_db = 0
 			current_track = new_track
 			)
