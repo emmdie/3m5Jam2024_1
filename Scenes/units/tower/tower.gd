@@ -4,6 +4,31 @@ extends BaseUnit
 signal tower_destroyed
 
 
+var material: StandardMaterial3D
+var max_mult: float
+var tween: Tween
+
+func _ready():
+	material = (get_child(0).get_child(0).get_child(0).mesh as Mesh).surface_get_material(0).duplicate()
+	(get_child(0).get_child(0).get_child(0).mesh as Mesh).surface_set_material(0, material)
+	#(get_child(0).get_child(0).get_child(0).mesh as Mesh).surface_set_material()
+	print(material)
+	max_mult = material.emission_energy_multiplier
+
+func start_pulse():
+	if tween:
+		tween.stop()
+	if is_inside_tree():
+		tween = get_tree().create_tween().set_loops()
+		tween.tween_property(material, "emission_energy_multiplier", max_mult / 2, 0.2)
+		tween.tween_property(material, "emission_energy_multiplier", max_mult * 1, 0.2)
+
+func stop_pulse():
+	if tween:
+		tween.stop()
+	tween = get_tree().create_tween()
+	tween.tween_property(material, "emission_energy_multiplier", max_mult, 0.2)
+
 func set_lane(lane: Lane) -> void:
 	current_lane = lane
 
