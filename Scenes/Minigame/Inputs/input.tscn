@@ -1,14 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch87j006arnjb"]
+[gd_scene load_steps=2 format=3 uid="uid://ch87j006arnjb"]
 
 [ext_resource type="Script" path="res://Scenes/Minigame/Inputs/Input.gd" id="1_6f0wq"]
-[ext_resource type="Texture2D" uid="uid://cloi2gc16v43c" path="res://Assets/Textures/Ui/Minigame/right_arrow.png" id="1_fw63c"]
-[ext_resource type="Texture2D" uid="uid://brqn12ngyavfl" path="res://Assets/Textures/Ui/Minigame/up_arrow.png" id="3_ocsod"]
 
 [node name="Input" type="TextureRect"]
 custom_minimum_size = Vector2(30, 30)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_fw63c")
 expand_mode = 1
 script = ExtResource("1_6f0wq")
-right_arrow = ExtResource("1_fw63c")
-up_arrow = ExtResource("3_ocsod")
