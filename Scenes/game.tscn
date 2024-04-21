@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8jkhdwbodrc3" path="res://Scenes/Ui/Hud.tscn" id="3_cfnx0"]
 [ext_resource type="Environment" uid="uid://ciw1fp1212j6p" path="res://Scenes/env.tres" id="4_3pejh"]
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_node", "tower_switch_timer")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_node", "tower_switch_timer", "summon_streak_timer")]
 script = ExtResource("1_50n6b")
 menu = NodePath("Control")
 camera = NodePath("Camera3D")
@@ -15,6 +15,7 @@ camera_position_game = NodePath("CameraGamePosition")
 lanes_node = NodePath("Lanes")
 tower_node = NodePath("Towers")
 tower_switch_timer = NodePath("TowerSwitchTimer")
+summon_streak_timer = NodePath("SummonStreakTimer")
 
 [node name="3m5jam11" parent="." instance=ExtResource("2_8xq6q")]
 
@@ -48,6 +49,9 @@ shadow_opacity = 0.5
 shadow_blur = 3.0
 
 [node name="TowerSwitchTimer" type="Timer" parent="."]
+
+[node name="SummonStreakTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CameraGamePosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 20, 33)

@@ -48,6 +48,7 @@ const SwitchWarning := preload("res://Scenes/switch_warning.tscn")
 @export var tower_node: Node3D
 @export var sound_manager: SoundManager
 @export var tower_switch_timer: Timer 
+@export var summon_streak_timer: Timer
 
 @onready var lanes: Array[Lane] = [
 	lanes_node.find_child("Lane1"),
@@ -62,6 +63,9 @@ var switches: Array[SwitchTowerDef] = []
 
 var switch_warning_1: Node3D
 var switch_warning_2: Node3D
+
+var summon_streak: int = 0
+var can_check_summon_streak = false
 
 func _ready():
 	GameState.tower_switch_timer = tower_switch_timer
@@ -96,6 +100,14 @@ func _start_action() ->void:
 	GameState.unit_stash.value.append(UNITS.pick_random())
 	GameState.unit_stash.changed.emit()
 	
+	get_tree().create_timer(15).timeout.connect(func() -> void: can_check_summon_streak = true)
+	summon_streak_timer.timeout.connect(
+		func() -> void: 
+			summon_streak = 0
+			__check_summon_streak()
+			print("reset streak")
+			)
+
 	switch_warning_1 = SwitchWarning.instantiate()
 	switch_warning_2 = SwitchWarning.instantiate()
 	add_child(switch_warning_1)
@@ -106,6 +118,7 @@ func _start_action() ->void:
 	GameState.unit_reached_tower.connect(__on_fight)
 	
 	switches.append(SwitchTowerDef.new(lanes))
+
 	
 	__animate_warning_appear()
 	
@@ -194,11 +207,16 @@ func __summon_on_lane(id: int):
 	unit.set_lane(lane)
 	unit.summon()
 	unit.finished_animation.connect(__on_finished_summoning)
+
 func __on_finished_summoning() -> void:
 	GameState.unit_stash.value.remove_at(GameState.selected_unit.value)
 	GameState.unit_stash.changed.emit()
 	__check_add_unit()
 	summoning_unit = null
+	if can_check_summon_streak:
+		summon_streak += 1
+		summon_streak_timer.start(GameState.rules.summon_streak_time)
+		__check_summon_streak()
 
 
 func __cancle_summon(id: int):
@@ -327,3 +345,19 @@ func __game_won() -> void:
 func __game_lost() -> void:
 	sound_manager.play_lost()
 	game_lost.emit()
+
+
+func __check_endfight_state() -> void:
+	if GameState.enemy_health.value <= 5:
+		sound_manager.play_endfight()
+
+
+func __check_summon_streak() -> void:
+	if not can_check_summon_streak:
+		return
+	if summon_streak == GameState.rules.summon_streak_busy:
+		sound_manager.play_busy()
+		print("streak_busy")
+	elif summon_streak == 0:
+		sound_manager.play_normal()
+		print("streak_ended")
