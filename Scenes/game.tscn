@@ -7,10 +7,10 @@
 [ext_resource type="Environment" uid="uid://ciw1fp1212j6p" path="res://Scenes/env.tres" id="4_3pejh"]
 [ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="4_y2bq7"]
 [ext_resource type="Texture2D" uid="uid://dsh37apcgajsd" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_up.png" id="5_2hghs"]
-[ext_resource type="Texture2D" uid="uid://uwe2g2ptnluk" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_left.png" id="5_4xhb6"]
+[ext_resource type="Texture2D" uid="uid://bk1q4dma8pw3g" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_left.png" id="5_sc4yb"]
 [ext_resource type="Texture2D" uid="uid://dfsc1j4j5kvve" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_right.png" id="6_rivyf"]
-[ext_resource type="Texture2D" uid="uid://dshgrb15kor4d" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_up.png" id="7_n0b6j"]
-[ext_resource type="Texture2D" uid="uid://dtmxro2pd8ha3" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_right.png" id="9_hggpv"]
+[ext_resource type="Texture2D" uid="uid://5gxl5gwiw3bh" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_up.png" id="7_g00ud"]
+[ext_resource type="Texture2D" uid="uid://dk41wfkgtvb57" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_right.png" id="9_ibxc1"]
 
 [node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_node", "tower_switch_timer", "summon_streak_timer")]
 script = ExtResource("1_50n6b")
@@ -39,7 +39,7 @@ texture = ExtResource("4_y2bq7")
 
 [node name="JoypadControl" type="Sprite3D" parent="Lanes/Lane1"]
 transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571125, 13.0581)
-texture = ExtResource("5_4xhb6")
+texture = ExtResource("5_sc4yb")
 
 [node name="Lane2" parent="Lanes" instance=ExtResource("1_peffo")]
 
@@ -49,7 +49,7 @@ texture = ExtResource("5_2hghs")
 
 [node name="JoypadControl" type="Sprite3D" parent="Lanes/Lane2"]
 transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571, 13.058)
-texture = ExtResource("7_n0b6j")
+texture = ExtResource("7_g00ud")
 
 [node name="Lane3" parent="Lanes" instance=ExtResource("1_peffo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
@@ -60,7 +60,7 @@ texture = ExtResource("6_rivyf")
 
 [node name="JoypadControl" type="Sprite3D" parent="Lanes/Lane3"]
 transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571, 13.058)
-texture = ExtResource("9_hggpv")
+texture = ExtResource("9_ibxc1")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 20, 33)
