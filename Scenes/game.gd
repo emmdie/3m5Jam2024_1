@@ -379,7 +379,7 @@ func __game_lost() -> void:
 
 
 func __check_endfight_state() -> void:
-	if GameState.enemy_health.value <= 5:
+	if GameState.enemy_health.value <= 4:
 		summon_streak_timer.paused = true
 		can_check_summon_streak = false
 		sound_manager.play_endfight()

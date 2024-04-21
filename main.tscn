@@ -87,7 +87,7 @@ visible = false
 [node name="Image 1" parent="Title/HowToPlay/TabContainer" index="2"]
 visible = true
 
-[node name="Story" type="RichTextLabel" parent="Title/HowToPlay/TabContainer" index="3"]
+[node name="Story" type="RichTextLabel" parent="Title/HowToPlay/TabContainer" index="4"]
 visible = false
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
