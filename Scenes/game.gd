@@ -2,6 +2,9 @@ class_name Game
 extends Node3D
 
 
+signal game_won
+signal game_lost
+
 
 class TowerQueue:
 	var lane: Lane
@@ -160,9 +163,9 @@ func _input(event):
 
 func __check_win_loose():
 	if GameState.enemy_health.value <= 0:
-		get_tree().change_scene_to_packed(preload("res://Scenes/win.tscn"))
+		__game_won()
 	elif GameState.player_health.value <= 0:
-		get_tree().change_scene_to_packed(preload("res://Scenes/loose.tscn"))
+		__game_lost()
 
 
 func __select(id: int):
@@ -315,3 +318,12 @@ func __rock_paper_siccsor(player: BaseUnit.Elements, enemy: BaseUnit.Elements) -
 			return enemy == BaseUnit.Elements.FIRE
 	# Unreachable
 	return true
+
+
+func __game_won() -> void:
+	sound_manager.play_won()
+	game_won.emit()
+
+func __game_lost() -> void:
+	sound_manager.play_lost()
+	game_lost.emit()
