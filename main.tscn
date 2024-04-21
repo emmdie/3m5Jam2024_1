@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_64hq7"]
 [ext_resource type="PackedScene" uid="uid://ug3rs383rd8g" path="res://Scenes/game.tscn" id="2_crre5"]
 [ext_resource type="PackedScene" uid="uid://dmf2jvpn51pcb" path="res://Scenes/title.tscn" id="2_wg4dh"]
-[ext_resource type="PackedScene" path="res://Scenes/sound_manager.tscn" id="4_fnrpf"]
+[ext_resource type="PackedScene" uid="uid://ca6rb0oldp826" path="res://Scenes/sound_manager.tscn" id="4_fnrpf"]
 [ext_resource type="PackedScene" uid="uid://ddxyctbu73y41" path="res://Scenes/win.tscn" id="5_0f5pv"]
 [ext_resource type="PackedScene" uid="uid://cq0x5rro62jgf" path="res://Scenes/loose.tscn" id="6_vyvqw"]
 
@@ -76,22 +76,19 @@ sound_manager = NodePath("SoundManager")
 [node name="Title" parent="." instance=ExtResource("2_wg4dh")]
 
 [node name="Title" parent="Title" index="3"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1204.0
+offset_left = -602.0
 offset_top = -518.0
-offset_right = 0.0
+offset_right = 602.0
 offset_bottom = 0.0
-grow_horizontal = 0
 
-[node name="TabContainer" parent="Title/HowToPlay" index="0"]
-current_tab = 1
-
-[node name="Image 1" parent="Title/HowToPlay/TabContainer" index="1"]
+[node name="Image 3" parent="Title/HowToPlay/TabContainer" index="1"]
 visible = false
 
-[node name="Story" type="RichTextLabel" parent="Title/HowToPlay/TabContainer" index="2"]
+[node name="Image 1" parent="Title/HowToPlay/TabContainer" index="2"]
+visible = true
+
+[node name="Story" type="RichTextLabel" parent="Title/HowToPlay/TabContainer" index="3"]
+visible = false
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 bbcode_enabled = true
