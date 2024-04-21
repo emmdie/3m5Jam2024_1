@@ -134,6 +134,9 @@ func _start_action() ->void:
 	unit.summon()
 
 func _input(event):
+	print(event)
+	print(event.is_action_released("summon_lane_2"))
+	print(event.is_action_pressed("summon_lane_2", true))
 	if event.is_action_pressed("summon_lane_0"):
 		__summon_on_lane(0)
 	elif event.is_action_pressed("summon_lane_1"):
@@ -146,11 +149,11 @@ func _input(event):
 		__select(1)
 	elif event.is_action_pressed("select_2"):
 		__select(2)
-	elif event.is_action_released("summon_lane_0"):
+	if event.is_action_released("summon_lane_0"):
 		__cancle_summon(0)
-	elif event.is_action_released("summon_lane_1"):
+	if event.is_action_released("summon_lane_1"):
 		__cancle_summon(1)
-	elif event.is_action_released("summon_lane_2"):
+	if event.is_action_released("summon_lane_2"):
 		__cancle_summon(2)
 		
 
@@ -163,6 +166,7 @@ func __check_win_loose():
 
 
 func __select(id: int):
+	print("select ", id)
 	if id >= len(GameState.unit_stash.value):
 		return
 	GameState.selected_unit.value = id
@@ -173,6 +177,7 @@ var summoning_id: int
 
 
 func __summon_on_lane(id: int):
+	print("summon ", id)	
 	if GameState.selected_unit.value >= len(GameState.unit_stash.value):
 		return
 	if summoning_unit:
@@ -273,6 +278,7 @@ func __on_fight(unit: Unit):
 func __on_tower_switch():
 	var tq1: TowerQueue
 	var tq2: TowerQueue
+	Input.start_joy_vibration(0, 0.1, 0.05, 0.3)
 	
 	__animate_warning_disappear()
 	
