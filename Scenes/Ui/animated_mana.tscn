@@ -2,6 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://bgon7lm5j5li" path="res://Assets/Textures/Ui/Hud/galaxy.png" id="1_2u38p"]
 
+[sub_resource type="Animation" id="Animation_52au4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_6rjiv"]
 resource_name = "rotate"
 length = 5.0
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "values": [0.0, 6.28319]
 }
 
-[sub_resource type="Animation" id="Animation_52au4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_slp04"]
 _data = {
 "RESET": SubResource("Animation_52au4"),
@@ -41,10 +41,11 @@ _data = {
 }
 
 [node name="AnimatedMana" type="Node2D"]
-skew = 0.867429
+skew = 0.347321
 
 [node name="Galaxy" type="Sprite2D" parent="."]
-skew = -0.596903
+position = Vector2(-13, -13)
+skew = -0.347321
 texture = ExtResource("1_2u38p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Galaxy"]
