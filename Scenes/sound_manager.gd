@@ -71,7 +71,9 @@ func _start_new_track(new_track: AudioStreamPlayer) -> void:
 
 
 func _fade_in_new_track(new_track: AudioStreamPlayer) -> void:
+	if current_track == new_track:
+		return
 	var tween: Tween = create_tween()
-	tween.tween_property(new_track, "volume_db", 0, 0.5)
-	tween.tween_property(current_track, "volume_db", -80, 0.5)
+	tween.tween_property(new_track, "volume_db", 0, 2)
+	tween.tween_property(current_track, "volume_db", -80, 2)
 	current_track = new_track
