@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmf2jvpn51pcb"]
+[gd_scene load_steps=12 format=3 uid="uid://dmf2jvpn51pcb"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_g4tcy"]
 [ext_resource type="Texture2D" uid="uid://bubbkwmq0rd2t" path="res://Assets/Textures/start_screen/wizard.png" id="2_765bs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsxut131ia5" path="res://Assets/Textures/start_screen/water.png" id="5_k0x7c"]
 [ext_resource type="Texture2D" uid="uid://cxui83ouem7xh" path="res://Assets/Textures/start_screen/plant.png" id="6_td3ga"]
 [ext_resource type="PackedScene" uid="uid://dsq3eg7twv75p" path="res://Scenes/Ui/Menus/license_viewer.tscn" id="7_dv4if"]
+[ext_resource type="Texture2D" uid="uid://bjdu1lrwl8fx0" path="res://Assets/Textures/Ui/screenshots/Pasted image.png" id="8_iuchk"]
 [ext_resource type="Texture2D" uid="uid://xabhrhl4l87v" path="res://Assets/Textures/Ui/screenshots/GameScreenshot.png" id="8_r4jqw"]
 [ext_resource type="Texture2D" uid="uid://b60tcj2fogi41" path="res://Assets/Textures/Ui/screenshots/GameScreenshot2.png" id="9_g1qxw"]
 
@@ -258,8 +259,15 @@ theme_override_constants/margin_bottom = 20
 
 [node name="TabContainer" type="TabContainer" parent="HowToPlay"]
 layout_mode = 2
+current_tab = 1
+
+[node name="Image 3" type="TextureRect" parent="HowToPlay/TabContainer"]
+custom_minimum_size = Vector2(1200, 700)
+layout_mode = 2
+texture = ExtResource("8_iuchk")
 
 [node name="Image 1" type="TextureRect" parent="HowToPlay/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(1200, 700)
 layout_mode = 2
 texture = ExtResource("8_r4jqw")
