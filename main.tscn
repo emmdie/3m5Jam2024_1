@@ -75,6 +75,42 @@ sound_manager = NodePath("SoundManager")
 
 [node name="Title" parent="." instance=ExtResource("2_wg4dh")]
 
+[node name="Title" parent="Title" index="3"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1204.0
+offset_top = -518.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+
+[node name="TabContainer" parent="Title/HowToPlay" index="0"]
+current_tab = 1
+
+[node name="Story" type="RichTextLabel" parent="Title/HowToPlay/TabContainer" index="1"]
+visible = false
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]{You're Cordially Invited!}[/center]
+
+Dear Esteemed Warlocks,
+
+Prepare your wands, dust off your spellbooks, and join us for an enchanting affair at the [rainbow freq=1.0 sat=0.8 val=0.8]{Annual Elemental Magic Bowling Tournament!}[/rainbow] 
+
+Summon your mastery of the arcane and test your skills against fellow practitioners in a thrilling competition where every roll holds the potential for magical marvels.
+
+In this mystical gathering, let the elements guide your path to victory as we weave spells amidst the clatter of pins and the crackle of magic.
+
+Refreshments, camaraderie, and bewitching surprises await. Don't miss out on this spellbinding event!
+
+May the arcane forces favor your aim!
+
+Warm regards,
+The Warlock Guild"
+fit_content = true
+
 [node name="Game" parent="." node_paths=PackedStringArray("sound_manager") instance=ExtResource("2_crre5")]
 sound_manager = NodePath("../SoundManager")
 
