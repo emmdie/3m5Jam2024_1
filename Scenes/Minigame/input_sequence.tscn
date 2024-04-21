@@ -9,7 +9,7 @@ script/source = "extends MarginContainer
 var possible_inputs = [\"l\",\"r\",\"u\",\"d\"]
 var current_inputs_position
 var inputs = []
-var input_amount = 4
+var input_amount = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,7 +52,6 @@ offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 theme = ExtResource("1_ygdfe")
 theme_override_constants/margin_left = 6
 theme_override_constants/margin_top = 6
@@ -62,5 +61,4 @@ script = SubResource("GDScript_062eb")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 10

@@ -5,7 +5,7 @@ extends CenterContainer
 @onready var ManaValue = $VBoxContainer/ManaContainer/ManaValue
 @onready var game_state = get_node("/root/GameState")
 
-var max_displayed_input_sequences = 5
+var max_displayed_input_sequences = 7
 var pressed_key_mapping = {"minigame_Left":"l", "minigame_Right":"r", "minigame_Up":"u", "minigame_Down":"d"}
 var sequences = []
 var current_sequence_position
