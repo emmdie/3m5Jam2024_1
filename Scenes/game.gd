@@ -120,7 +120,6 @@ func _start_action() ->void:
 	switches.append(SwitchTowerDef.new(lanes))
 
 	
-	__animate_warning_appear()
 	
 	for lane in lanes:
 		var queue = TowerQueue.new()
@@ -148,11 +147,10 @@ func _start_action() ->void:
 	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
 	unit.set_lane(lanes[0])
 	unit.summon()
+	
+	__animate_warning_appear()
 
 func _input(event):
-	print(event)
-	print(event.is_action_released("summon_lane_2"))
-	print(event.is_action_pressed("summon_lane_2", true))
 	if event.is_action_pressed("summon_lane_0"):
 		__summon_on_lane(0)
 	elif event.is_action_pressed("summon_lane_1"):
@@ -225,8 +223,21 @@ func __cancle_summon(id: int):
 	summoning_unit.cancle_summoning()
 	summoning_unit = null
 
-
+var old_t1: Tower
+var old_t2: Tower
 func __animate_warning_appear():
+	__animate_warning_disappear()
+	for tower_queue in tower_queues:
+		if tower_queue.lane == switches[0].lane1:
+			tower_queue.first.start_pulse()
+			old_t1 = tower_queue.first
+	
+	for tower_queue in tower_queues:
+		if tower_queue.lane == switches[0].lane2:
+			tower_queue.first.start_pulse()
+			old_t2 = tower_queue.first
+	
+	"""
 	if switch_warning_1:
 		switch_warning_1.global_position = switches[0].lane1.global_position + Vector3.UP * 2
 		switch_warning_1.scale = Vector3.ZERO
@@ -243,14 +254,25 @@ func __animate_warning_appear():
 	if switch_warning_2:
 		tween.parallel().tween_property(switch_warning_2, "scale", Vector3.ONE, 0.1).set_delay(0.05)
 	await tween.finished
+	"""
 
 func __animate_warning_disappear():
+	if is_instance_valid(old_t1):
+		old_t1.stop_pulse()
+		old_t1 = null
+	
+	if is_instance_valid(old_t2):
+		old_t2.stop_pulse()
+		old_t2 = null
+	
+	"""
 	var tween = get_tree().create_tween()
 	if switch_warning_1:
 		tween.tween_property(switch_warning_1, "scale", Vector3.ZERO, 0.1)
 	if switch_warning_2:
 		tween.parallel().tween_property(switch_warning_2, "scale", Vector3.ZERO, 0.1).set_delay(0.05)
 	await tween.finished
+	"""
 
 func __on_mana_changed():
 	__check_add_unit()
@@ -293,6 +315,9 @@ func __on_fight(unit: Unit):
 	new_tower.place(current_lane)
 	tower_queue.push(Tower.instantiate(BaseUnit.pick_element()))
 	tower_switch_timer.paused = false
+	
+	await get_tree().create_timer(0.2).timeout
+	__animate_warning_appear()
 
 
 

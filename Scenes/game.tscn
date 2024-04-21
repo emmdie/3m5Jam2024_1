@@ -39,7 +39,6 @@ fov = 30.0
 environment = ExtResource("4_3pejh")
 
 [node name="Control" parent="." instance=ExtResource("3_cfnx0")]
-visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.780802, 0.00654079, -0.624745, -0.582176, -0.370542, 0.72372, -0.22676, 0.928793, 0.293128, 0, 11.4597, 16.8325)
