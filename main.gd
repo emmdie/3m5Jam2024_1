@@ -6,10 +6,16 @@ extends Node
 @export var win_menu: Control
 @export var lose_menu: Control
 
+@onready var start_button = $Title/VBoxContainer/Start
+@onready var animator = $AnimationPlayer
+@onready var licenses = $Title/LicenseViewer
+
 func _ready() -> void:
 	sound_manager.start_title()
 	GameState.game_restarted.connect(_restart)
 	_connect_current_game_scene()
+	start_button.grab_focus()
+	
 
 
 func _connect_current_game_scene() -> void:
@@ -39,9 +45,11 @@ func _on_exit_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	pass # Replace with function body.
+	licenses.visible = true
 
 func _on_start_pressed() -> void:
-	title_screen.hide()
+	animator.play("fade_title")
 	current_game_scene.start_game()
-
+	
+func _on_git_hub_pressed() -> void:
+	OS.shell_open("https://github.com/emmdie/3m5Jam2024_1")
