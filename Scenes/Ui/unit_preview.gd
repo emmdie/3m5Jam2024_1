@@ -4,6 +4,7 @@ extends PanelContainer
 @onready var viewport = $SubViewportContainer/SubViewport
 @onready var xbox_pic = $HBoxContainer/XboxStickTexture
 @onready var keyboard_pic = $HBoxContainer/keyboardTexture
+@onready var circle = $CircleTexture
 
 func set_unit(new_unit):
 	clear()
@@ -20,4 +21,4 @@ func set_icons(icons: Array[Texture]):
 	xbox_pic.texture = icons[1]
 
 func highlight(value: bool):
-	pass
+	circle.visible = value

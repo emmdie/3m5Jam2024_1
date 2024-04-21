@@ -11,6 +11,8 @@ extends Control
 func _ready() -> void:
 	GameState.unit_stash.changed.connect(update_preview)
 	set_input_icons()
+	GameState.selected_unit.changed.connect(highlight)
+	highlight()
 	
 func update_preview():
 	var stash_size = GameState.unit_stash.value.size()
@@ -26,3 +28,10 @@ func set_input_icons():
 	preview1.set_icons(left_icons)
 	preview2.set_icons(up_icons)
 	preview3.set_icons(right_icons)
+
+
+func highlight():
+	var i = 0
+	for preview in previews:
+		preview.highlight(i == GameState.selected_unit.value)
+		i += 1 
