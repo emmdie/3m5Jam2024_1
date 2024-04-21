@@ -162,32 +162,6 @@ grow_vertical = 2
 texture = ExtResource("6_td3ga")
 expand_mode = 1
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -794.5
-offset_top = -367.0
-offset_right = 346.5
-offset_bottom = 151.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_x = 10
-theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 0
-theme_override_constants/shadow_outline_size = 12
-theme_override_constants/line_spacing = 0
-text = "Warlock Bowling"
-label_settings = SubResource("LabelSettings_abhpi")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 6
@@ -262,12 +236,12 @@ layout_mode = 2
 current_tab = 1
 
 [node name="Image 3" type="TextureRect" parent="HowToPlay/TabContainer"]
+visible = false
 custom_minimum_size = Vector2(1200, 700)
 layout_mode = 2
 texture = ExtResource("8_iuchk")
 
 [node name="Image 1" type="TextureRect" parent="HowToPlay/TabContainer"]
-visible = false
 custom_minimum_size = Vector2(1200, 700)
 layout_mode = 2
 texture = ExtResource("8_r4jqw")
@@ -286,3 +260,31 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "hide
 "
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -622.0
+offset_top = -251.0
+offset_right = 622.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 12
+theme_override_constants/line_spacing = 0
+text = "Warlock Bowling"
+label_settings = SubResource("LabelSettings_abhpi")
+horizontal_alignment = 1
+vertical_alignment = 1
