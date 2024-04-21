@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://c8jkhdwbodrc3" path="res://Scenes/Ui/Hud.tscn" id="3_cfnx0"]
 [ext_resource type="Environment" uid="uid://ciw1fp1212j6p" path="res://Scenes/env.tres" id="4_3pejh"]
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("menu")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_node", "tower_switch_timer")]
 script = ExtResource("1_50n6b")
 menu = NodePath("Control")
+camera = NodePath("Camera3D")
+camera_position_title = NodePath("CameraTitlePosition")
+camera_position_game = NodePath("CameraGamePosition")
+lanes_node = NodePath("Lanes")
+tower_node = NodePath("Towers")
+tower_switch_timer = NodePath("TowerSwitchTimer")
 
 [node name="3m5jam11" parent="." instance=ExtResource("2_8xq6q")]
 
@@ -25,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.825901, 0.563815, 0, -0.563815, 0.825901, 0, 15.9946, 27.4579)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 7.5, 37.5)
 fov = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -33,18 +39,17 @@ environment = ExtResource("4_3pejh")
 
 [node name="Control" parent="." instance=ExtResource("3_cfnx0")]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.404753, 17.8933, -19.0339)
-visible = false
-light_energy = 15.0
-shadow_enabled = true
-shadow_bias = 0.4
-shadow_opacity = 0.8
-omni_range = 100.0
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.780802, 0.00654079, -0.624745, -0.582176, -0.370542, 0.72372, -0.22676, 0.928793, 0.293128, 0, 11.4597, 16.8325)
 light_energy = 0.5
 shadow_enabled = true
 shadow_opacity = 0.5
 shadow_blur = 3.0
+
+[node name="TowerSwitchTimer" type="Timer" parent="."]
+
+[node name="CameraGamePosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 16, 27.5)
+
+[node name="CameraTitlePosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 7.5, 37.5)
