@@ -18,3 +18,6 @@ func clear():
 func set_icons(icons: Array[Texture]):
 	keyboard_pic.texture = icons[0]
 	xbox_pic.texture = icons[1]
+
+func highlight(value: bool):
+	pass

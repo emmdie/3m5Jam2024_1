@@ -1,22 +1,38 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d2lh3hpldd764"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d2lh3hpldd764"]
 
 [ext_resource type="FontFile" uid="uid://cqn2ulq1n40q4" path="res://Assets/Fonts/Rosarivo-Regular.ttf" id="1_8xd5a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbp6c"]
 bg_color = Color(0.262745, 0.262745, 0.415686, 1)
-skew = Vector2(0.2, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+skew = Vector2(0.25, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 border_color = Color(0.129412, 0.129412, 0.137255, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 corner_detail = 5
 shadow_size = 13
 shadow_offset = Vector2(-15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ri28"]
+bg_color = Color(0.129412, 0.129412, 0.137255, 1)
+skew = Vector2(0.3, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8oj7t"]
+bg_color = Color(0.294118, 0.501961, 0.792157, 1)
+skew = Vector2(0.3, 0)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [resource]
 default_font = ExtResource("1_8xd5a")
@@ -28,8 +44,10 @@ Button/colors/icon_normal_color = Color(0.129412, 0.129412, 0.137255, 1)
 Button/colors/icon_pressed_color = Color(0.721569, 0.709804, 0.72549, 1)
 Label/colors/font_color = Color(0.94902, 0.941176, 0.898039, 1)
 Label/colors/font_outline_color = Color(0.129412, 0.129412, 0.137255, 1)
-MarginContainer/constants/margin_bottom = 30
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 30
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_bbp6c")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_0ri28")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_8oj7t")
