@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dplnr5q0eeebh"]
+[gd_scene load_steps=15 format=3 uid="uid://dplnr5q0eeebh"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_s4h8k"]
 [ext_resource type="Script" path="res://Scenes/Ui/TimerPanel.gd" id="2_ah4lv"]
 [ext_resource type="Script" path="res://Scenes/Ui/Ui.gd" id="2_oqoan"]
 [ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="3_8mwmi"]
 [ext_resource type="PackedScene" uid="uid://bxebpofejftxv" path="res://Scenes/Minigame/minigame.tscn" id="4_3up0a"]
-[ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="3_8mwmi"]
 [ext_resource type="Script" path="res://Scenes/Ui/EnemyHealthPanel.gd" id="4_7tmcb"]
 [ext_resource type="Texture2D" uid="uid://bk1q4dma8pw3g" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_left.png" id="4_78gno"]
 [ext_resource type="PackedScene" uid="uid://caext43hae4ho" path="res://Scenes/Ui/unit_preview.tscn" id="4_pivm6"]
@@ -41,6 +40,8 @@ theme = ExtResource("1_s4h8k")
 [node name="MiniGame" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("1_s4h8k")
 
 [node name="Minigame" parent="MarginContainer/MiniGame" instance=ExtResource("4_3up0a")]
 layout_mode = 2

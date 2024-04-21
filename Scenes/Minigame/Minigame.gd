@@ -1,11 +1,11 @@
-extends Control
+extends CenterContainer
 
 @onready var input_sequence = load("res://Scenes/Minigame/input_sequence.tscn")
 @onready var ManaBar = $VBoxContainer/ManaContainer/ManaBar
 @onready var ManaValue = $VBoxContainer/ManaContainer/ManaValue
 @onready var game_state = get_node("/root/GameState")
 
-var max_displayed_input_sequences = 2
+var max_displayed_input_sequences = 5
 var pressed_key_mapping = {"minigame_Left":"l", "minigame_Right":"r", "minigame_Up":"u", "minigame_Down":"d"}
 var sequences = []
 var current_sequence_position
