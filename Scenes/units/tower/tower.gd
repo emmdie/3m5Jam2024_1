@@ -2,7 +2,9 @@ class_name Tower
 extends BaseUnit
 
 signal tower_destroyed
+signal switch_finished
 
+@export var animation: AnimationPlayer
 
 var material: StandardMaterial3D
 var max_mult: float
@@ -45,14 +47,25 @@ static func instantiate(type: Elements) -> Tower:
 func place(lane: Lane) -> void:
 	set_lane(lane)
 	global_position = lane.global_position
+	animation.play("build")
 	
 
 func switch_lane(lane: Lane) -> void:
 	set_lane(lane)
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", lane.global_position, 0.2)
-
+	animation.play_backwards("build")
+	await animation.animation_finished
+	global_position = current_lane.global_position
+	animation.play("build")
+	await animation.animation_finished
+	switch_finished.emit()
 
 func fight(_has_won_fight: bool) -> void:
+	animation.play("fight")
+	await animation.animation_finished
+	if not _has_won_fight:
+		animation.play("die")
+	else:
+		animation.play_backwards("build")
+	await animation.animation_finished
 	tower_destroyed.emit()
 	queue_free()
