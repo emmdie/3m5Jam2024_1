@@ -307,6 +307,7 @@ func __on_fight(unit: Unit):
 	else:
 		GameState.player_health.value -= 1
 	
+	__check_endfight_state()
 	current_tower.fight(not win)
 	unit.fight(win)
 	await current_tower.tower_destroyed
@@ -379,6 +380,12 @@ func __game_lost() -> void:
 
 func __check_endfight_state() -> void:
 	if GameState.enemy_health.value <= 5:
+		summon_streak_timer.paused = true
+		can_check_summon_streak = false
+		sound_manager.play_endfight()
+	elif GameState.player_health.value <= 3:
+		summon_streak_timer.paused = true
+		can_check_summon_streak = false
 		sound_manager.play_endfight()
 
 
