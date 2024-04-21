@@ -67,11 +67,13 @@ _data = {
 "fade_title": SubResource("Animation_56c8v")
 }
 
-[node name="Main" type="Node" node_paths=PackedStringArray("current_game_scene", "title_screen", "sound_manager")]
+[node name="Main" type="Node" node_paths=PackedStringArray("current_game_scene", "title_screen", "sound_manager", "win_menu", "lose_menu")]
 script = ExtResource("1_64hq7")
 current_game_scene = NodePath("Game")
 title_screen = NodePath("Title")
 sound_manager = NodePath("SoundManager")
+win_menu = NodePath("Win")
+lose_menu = NodePath("Lose")
 
 [node name="Title" parent="." instance=ExtResource("2_wg4dh")]
 

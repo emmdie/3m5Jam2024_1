@@ -8,7 +8,7 @@ class_name GameRules
 @export var enemy_max_health: int = 10
 
 @export var tower_switch_time: float = 7.0
-@export var summon_streak_time: float = 3
-@export var summon_streak_busy: int = 1
+@export var summon_streak_time: float = 6
+@export var summon_streak_busy: int = 2
 
 @export var tie_player_advantage: bool = false
