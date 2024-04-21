@@ -6,13 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://bjmqrpk5wstq5" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_j.png" id="3_ecsyg"]
 [ext_resource type="PackedScene" uid="uid://bxebpofejftxv" path="res://Scenes/Minigame/minigame.tscn" id="4_3up0a"]
 [ext_resource type="Script" path="res://Scenes/Ui/EnemyHealthPanel.gd" id="4_7tmcb"]
-[ext_resource type="Texture2D" uid="uid://bk1q4dma8pw3g" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_left.png" id="4_78gno"]
+[ext_resource type="Texture2D" uid="uid://uwe2g2ptnluk" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_left.png" id="4_f15lx"]
 [ext_resource type="PackedScene" uid="uid://caext43hae4ho" path="res://Scenes/Ui/unit_preview.tscn" id="4_pivm6"]
 [ext_resource type="Texture2D" uid="uid://dj4ac28rxpjyq" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_k.png" id="5_0nn3v"]
 [ext_resource type="Texture2D" uid="uid://cj0ir602q6xec" path="res://Assets/Textures/Ui/Hud/sandwatch.png" id="5_imrn5"]
-[ext_resource type="Texture2D" uid="uid://5gxl5gwiw3bh" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_up.png" id="6_up4c8"]
+[ext_resource type="Texture2D" uid="uid://dshgrb15kor4d" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_up.png" id="6_ddmby"]
 [ext_resource type="Texture2D" uid="uid://omhlkufn7ao0" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_l.png" id="7_hh3ro"]
-[ext_resource type="Texture2D" uid="uid://dk41wfkgtvb57" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_right.png" id="8_dhwjx"]
+[ext_resource type="Texture2D" uid="uid://dtmxro2pd8ha3" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_right.png" id="8_enspp"]
 [ext_resource type="Script" path="res://Scenes/Ui/Manabar.gd" id="14_8bmil"]
 [ext_resource type="Script" path="res://Scenes/Ui/PlayerHealthPanel.gd" id="14_h6d2s"]
 [ext_resource type="Texture2D" uid="uid://bgon7lm5j5li" path="res://Assets/Textures/Ui/Hud/galaxy.png" id="15_rh864"]
@@ -27,9 +27,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_s4h8k")
 script = ExtResource("2_oqoan")
-left_icons = Array[Texture]([ExtResource("3_ecsyg"), ExtResource("4_78gno")])
-up_icons = Array[Texture]([ExtResource("5_0nn3v"), ExtResource("6_up4c8")])
-right_icons = Array[Texture]([ExtResource("7_hh3ro"), ExtResource("8_dhwjx")])
+left_icons = Array[Texture]([ExtResource("3_ecsyg"), ExtResource("4_f15lx")])
+up_icons = Array[Texture]([ExtResource("5_0nn3v"), ExtResource("6_ddmby")])
+right_icons = Array[Texture]([ExtResource("7_hh3ro"), ExtResource("8_enspp")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
