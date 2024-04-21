@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://v8nhk6e8r5ht" path="res://Assets/Textures/Ui/Minigame/up_arrow.png" id="3_im306"]
 
 [node name="Input" type="TextureRect"]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(80, 80)
 scale = Vector2(0.25, 0.25)
+size_flags_horizontal = 4
 expand_mode = 1
 script = ExtResource("1_6f0wq")
 right_arrow = ExtResource("2_c6612")

@@ -40,17 +40,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_s4h8k")
 
-[node name="MiniGame" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme = ExtResource("1_s4h8k")
-
-[node name="Minigame" parent="MarginContainer/MiniGame" instance=ExtResource("4_3up0a")]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
 [node name="TimerPanel" type="PanelContainer" parent="MarginContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
@@ -91,10 +80,21 @@ script = ExtResource("14_h6d2s")
 layout_mode = 2
 columns = 10
 
-[node name="Manabar" type="PanelContainer" parent="MarginContainer"]
+[node name="MiniGame" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+theme = ExtResource("1_s4h8k")
+
+[node name="Minigame" parent="MarginContainer/MiniGame" instance=ExtResource("4_3up0a")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Manabar" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 script = ExtResource("14_8bmil")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Manabar"]

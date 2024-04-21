@@ -1,8 +1,6 @@
 extends CenterContainer
 
 @onready var input_sequence = load("res://Scenes/Minigame/input_sequence.tscn")
-@onready var ManaBar = $VBoxContainer/ManaContainer/ManaBar
-@onready var ManaValue = $VBoxContainer/ManaContainer/ManaValue
 @onready var game_state = get_node("/root/GameState")
 
 var max_displayed_input_sequences = 7
@@ -43,8 +41,6 @@ func _check_input(event):
 func _set_mana(new_value):
 	if new_value <= game_state.rules.player_max_mana:
 		game_state.mana.value = new_value
-		ManaBar.value = new_value
-		ManaValue.text = str(new_value)
 
 func _add_input_prompt():
 	var new_input = input_sequence.instantiate()

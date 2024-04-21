@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxebpofejftxv"]
+[gd_scene load_steps=3 format=3 uid="uid://bxebpofejftxv"]
 
 [ext_resource type="Script" path="res://Scenes/Minigame/Minigame.gd" id="1_gt3hp"]
-[ext_resource type="Texture2D" uid="uid://d0vvajj3lily2" path="res://Assets/Textures/Ui/Minigame/ManaBarProgress.png" id="2_dqqew"]
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="3_6v2kw"]
 
 [node name="Minigame" type="CenterContainer"]
@@ -12,17 +11,6 @@ grow_vertical = 2
 script = ExtResource("1_gt3hp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="ManaContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="ManaBar" type="TextureProgressBar" parent="VBoxContainer/ManaContainer"]
-layout_mode = 2
-max_value = 20.0
-texture_progress = ExtResource("2_dqqew")
-
-[node name="ManaValue" type="Label" parent="VBoxContainer/ManaContainer"]
 layout_mode = 2
 
 [node name="InputList" type="VBoxContainer" parent="VBoxContainer"]
