@@ -51,7 +51,7 @@ func _get_auto_save_load():
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		input_mode = INPUT.CONTROLLER
-		print("CONTROLLER")
+		#print("CONTROLLER")
 	else:
 		input_mode = INPUT.KEYBOARD
-		print("KEYBBBBBB")
+		#print("KEYBBBBBB")
