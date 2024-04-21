@@ -1,7 +1,7 @@
 extends PanelContainer
 
 @onready var container = $GridContainer
-@export var heart_scene: PackedScene
+@onready var heart_scene= preload("res://Scenes/Ui/enemy_heart.tscn")
 
 
 func _ready():
@@ -18,6 +18,7 @@ func update() -> void:
 		for i in GameState.enemy_health.value:
 			var heart = heart_scene.instantiate()
 			container.add_child(heart)
+			heart.make_enemy()
 	else:
 		for i in current_hearts.size() - GameState.enemy_health.value:
 			container.get_child(i).queue_free()

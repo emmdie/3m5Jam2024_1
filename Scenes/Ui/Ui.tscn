@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dplnr5q0eeebh"]
+[gd_scene load_steps=16 format=3 uid="uid://dplnr5q0eeebh"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_s4h8k"]
 [ext_resource type="Script" path="res://Scenes/Ui/TimerPanel.gd" id="2_ah4lv"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://dsh37apcgajsd" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_up.png" id="6_k4yav"]
 [ext_resource type="Texture2D" uid="uid://dk41wfkgtvb57" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_right.png" id="7_w5i74"]
 [ext_resource type="Texture2D" uid="uid://dfsc1j4j5kvve" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_right.png" id="8_uv12n"]
-[ext_resource type="PackedScene" uid="uid://4c3pxi0c24in" path="res://Scenes/Ui/enemy_heart.tscn" id="8_yqrvq"]
+[ext_resource type="Script" path="res://Scenes/Ui/Manabar.gd" id="14_8bmil"]
+[ext_resource type="Script" path="res://Scenes/Ui/PlayerHealthPanel.gd" id="14_h6d2s"]
+[ext_resource type="Texture2D" uid="uid://bgon7lm5j5li" path="res://Assets/Textures/Ui/Hud/galaxy.png" id="15_rh864"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -43,7 +45,7 @@ theme_override_font_sizes/font_size = 100
 text = "MiniGame"
 
 [node name="TimerPanel" type="PanelContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -53,20 +55,24 @@ script = ExtResource("2_ah4lv")
 layout_mode = 2
 
 [node name="ProgressBar" type="TextureProgressBar" parent="MarginContainer/TimerPanel/CenterContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 max_value = 1.0
 step = 0.0
 value = 0.7
 fill_mode = 4
+nine_patch_stretch = true
 texture_progress = ExtResource("5_imrn5")
 
 [node name="UnitPreviewPanel" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme = ExtResource("1_s4h8k")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/UnitPreviewPanel"]
 layout_mode = 2
+theme = ExtResource("1_s4h8k")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/UnitPreviewPanel/MarginContainer"]
 layout_mode = 2
@@ -85,7 +91,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("4_7tmcb")
-heart_scene = ExtResource("8_yqrvq")
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/EnemyHealthPanel"]
 layout_mode = 2
@@ -95,3 +100,46 @@ columns = 10
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+script = ExtResource("14_h6d2s")
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/PlayerHealthPanel"]
+layout_mode = 2
+columns = 10
+
+[node name="Manabar" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("14_8bmil")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Manabar"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="MarginContainer/Manabar/HBoxContainer"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Manabar/HBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Manabar/HBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(350, 45)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_s4h8k")
+max_value = 10.0
+step = 1.0
+value = 8.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="MarginContainer/Manabar/HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Manabar"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("15_rh864")
+expand_mode = 1
+stretch_mode = 4
