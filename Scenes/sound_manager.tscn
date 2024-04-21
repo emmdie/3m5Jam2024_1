@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca6rb0oldp826"]
+
+[ext_resource type="Script" path="res://Scenes/sound_manager.gd" id="1_ip68n"]
+[ext_resource type="AudioStream" uid="uid://dlfj01xmvbbbg" path="res://Assets/sound/music/titel_song.wav" id="2_5kjv1"]
+[ext_resource type="AudioStream" uid="uid://qn1avnqhlufb" path="res://Assets/sound/music/game_start.wav" id="3_a5s4r"]
+[ext_resource type="AudioStream" uid="uid://cdjunaw5sxba2" path="res://Assets/sound/music/game_normal.wav" id="4_db720"]
+[ext_resource type="AudioStream" uid="uid://hiadk14ifm5e" path="res://Assets/sound/music/game_endfight.wav" id="5_u5i7d"]
+[ext_resource type="AudioStream" uid="uid://cjui1owukoim4" path="res://Assets/sound/music/game_busy.wav" id="6_ddn38"]
+[ext_resource type="AudioStream" uid="uid://bahycsya3045p" path="res://Assets/sound/music/game_won.wav" id="7_1tdtp"]
+
+[node name="SoundManager" type="Node" node_paths=PackedStringArray("title_music", "game_start", "game_normal", "game_busy", "game_endfight", "game_won", "game_lost")]
+script = ExtResource("1_ip68n")
+title_music = NodePath("TitelMusic")
+game_start = NodePath("GameStart")
+game_normal = NodePath("GameNormal")
+game_busy = NodePath("GameBusy")
+game_endfight = NodePath("GameEndFight")
+game_won = NodePath("GameWon")
+game_lost = NodePath("GameLost")
+
+[node name="TitelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5kjv1")
+bus = &"Music"
+
+[node name="GameStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a5s4r")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="GameNormal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_db720")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="GameEndFight" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_u5i7d")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="GameBusy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ddn38")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="GameWon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1tdtp")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="GameLost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1tdtp")
+volume_db = -80.0
+bus = &"Music"

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl73eu40u43g3"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_64hq7"]
+[ext_resource type="PackedScene" uid="uid://d4d7ecqlohxt" path="res://Scenes/game.tscn" id="2_crre5"]
+[ext_resource type="PackedScene" uid="uid://dir3318ssjjov" path="res://Scenes/title.tscn" id="2_wg4dh"]
+[ext_resource type="PackedScene" uid="uid://ca6rb0oldp826" path="res://Scenes/sound_manager.tscn" id="4_fnrpf"]
+[ext_resource type="PackedScene" uid="uid://ddxyctbu73y41" path="res://Scenes/win.tscn" id="5_0f5pv"]
+[ext_resource type="PackedScene" uid="uid://cq0x5rro62jgf" path="res://Scenes/loose.tscn" id="6_vyvqw"]
+
+[node name="Main" type="Node" node_paths=PackedStringArray("current_game_scene", "title_screen", "sound_manager")]
+script = ExtResource("1_64hq7")
+current_game_scene = NodePath("Game")
+title_screen = NodePath("Title")
+sound_manager = NodePath("SoundManager")
+
+[node name="Title" parent="." instance=ExtResource("2_wg4dh")]
+
+[node name="Game" parent="." node_paths=PackedStringArray("sound_manager") instance=ExtResource("2_crre5")]
+sound_manager = NodePath("../SoundManager")
+
+[node name="SoundManager" parent="." instance=ExtResource("4_fnrpf")]
+
+[node name="Win" parent="." instance=ExtResource("5_0f5pv")]
+visible = false
+
+[node name="Lose" parent="." instance=ExtResource("6_vyvqw")]
+visible = false
+
+[connection signal="pressed" from="Title/MarginContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Title/MarginContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Title/MarginContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+
+[editable path="Title"]

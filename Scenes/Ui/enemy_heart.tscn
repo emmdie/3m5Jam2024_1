@@ -1,9 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://6gbjl3141qx2"]
+[gd_scene load_steps=26 format=3 uid="uid://6gbjl3141qx2"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_3tj85"]
 [ext_resource type="Texture2D" uid="uid://bsoia255315sv" path="res://Assets/Textures/Ui/Hud/heart-shield.png" id="1_vlto0"]
 [ext_resource type="Script" path="res://Scenes/Ui/enemy_heart.gd" id="2_kgy70"]
 [ext_resource type="Texture2D" uid="uid://csqo4om0ptcb5" path="res://Assets/Textures/Ui/Hud/doorway.png" id="3_453l7"]
+[ext_resource type="Texture2D" uid="uid://dqskcq4wnd2qc" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0001.png" id="5_vbwm8"]
+[ext_resource type="Texture2D" uid="uid://cct31pj2pcn8a" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0002.png" id="6_g61gi"]
+[ext_resource type="Texture2D" uid="uid://cmhrdxjce06gl" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0003.png" id="7_i0o8v"]
+[ext_resource type="Texture2D" uid="uid://bvqe7ci67xt2b" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0004.png" id="8_ivd2w"]
+[ext_resource type="Texture2D" uid="uid://1j2bh3joywb5" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0005.png" id="9_00x0x"]
+[ext_resource type="Texture2D" uid="uid://db7vgqsebm1g0" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0006.png" id="10_cuvx0"]
+[ext_resource type="Texture2D" uid="uid://cjx4r7sfeckvi" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0007.png" id="11_xakmf"]
+[ext_resource type="Texture2D" uid="uid://caxq6tuw2m76o" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0008.png" id="12_l3q6m"]
+[ext_resource type="Texture2D" uid="uid://cjoxl0khrnmyp" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0009.png" id="13_j1tqj"]
+[ext_resource type="Texture2D" uid="uid://br2uucyxbuxbh" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0010.png" id="14_x6wkb"]
+[ext_resource type="Texture2D" uid="uid://d3pcepw0eq32q" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0011.png" id="15_aageg"]
+[ext_resource type="Texture2D" uid="uid://uovp08bdj3us" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0012.png" id="16_vff0f"]
+[ext_resource type="Texture2D" uid="uid://d0nt6hxfa20j2" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0013.png" id="17_qyctx"]
+[ext_resource type="Texture2D" uid="uid://b0djpem4xj6bg" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0014.png" id="18_gci1n"]
+[ext_resource type="Texture2D" uid="uid://85o6hh7cpcoj" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0015.png" id="19_xask1"]
+[ext_resource type="Texture2D" uid="uid://coisubkikx2g3" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0016.png" id="20_hky1b"]
+[ext_resource type="Texture2D" uid="uid://barre2u3k5tnu" path="res://Assets/Textures/Ui/Hud/doorway_shatter/0017.png" id="21_pcr7a"]
 
 [sub_resource type="Animation" id="Animation_m2ceu"]
 length = 0.001
@@ -42,6 +59,65 @@ _data = {
 "pulsate": SubResource("Animation_n1qv4")
 }
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_ok8ns"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vbwm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_g61gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i0o8v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ivd2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_00x0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_cuvx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xakmf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_l3q6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j1tqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_x6wkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_aageg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_vff0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qyctx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gci1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_xask1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_hky1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_pcr7a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
 [node name="EnemyHeart" type="MarginContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -59,9 +135,18 @@ layout_mode = 2
 
 [node name="Texture" type="TextureRect" parent="Node2D"]
 custom_minimum_size = Vector2(36, 36)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_453l7")
 expand_mode = 1
 
@@ -70,6 +155,22 @@ libraries = {
 "": SubResource("AnimationLibrary_pxt4c")
 }
 autoplay = "pulsate"
+
+[node name="Control" type="Control" parent="Node2D"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/Control"]
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_ok8ns")
+frame_progress = 0.30672
 
 [node name="Spacer" type="Control" parent="."]
 custom_minimum_size = Vector2(44, 44)

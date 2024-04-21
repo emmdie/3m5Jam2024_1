@@ -2,6 +2,7 @@
 extends GameStateBase
 
 signal unit_reached_tower(unit: Unit)
+signal game_restarted
 
 var rules := GameRules.new()
 
@@ -18,8 +19,8 @@ signal destroy_enemy(from: Vector2)
 
 var time_to_tower_change: float:
 	get:
-		return tower_switch_timer.time_left
-@onready var tower_switch_timer: SceneTreeTimer = get_tree().create_timer(0)
+		return tower_switch_timer.time_left if tower_switch_timer else 0.0
+var tower_switch_timer: Timer
 
 
 func restart():
@@ -28,8 +29,7 @@ func restart():
 	mana.reset()
 	enemy_health.reset()
 	player_health.reset()
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
-
+	game_restarted.emit()
 
 # Override this to change the path under which the state is saved.
 func _get_file_path():

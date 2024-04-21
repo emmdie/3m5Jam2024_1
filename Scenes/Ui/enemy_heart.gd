@@ -7,6 +7,13 @@ extends MarginContainer
 func _ready() -> void:
 	randomize_playback_speed()
 
+func explode() -> void:
+	$Node2D/Texture.modulate.a = 0.0
+	$Node2D/Control.show()
+	$Node2D/Control/AnimatedSprite2D.play("default")
+	var tween = get_tree().create_tween()
+	tween.tween_property($Node2D/Control/AnimatedSprite2D, "modulate:a", 0, 0.3).set_delay(0.2)
+
 func randomize_playback_speed():
 	animator.speed_scale = randf_range(0.7, 1.5)
 
