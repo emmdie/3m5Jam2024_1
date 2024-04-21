@@ -14,10 +14,13 @@ class ParticleStream extends MultiMeshInstance2D:
 		to = p_to
 		from = p_from
 		multimesh = MultiMesh.new()
+		var quad := QuadMesh.new()
+		quad.size = Vector2(50, 50)
 		var sphere := SphereMesh.new()
 		sphere.radius = 10
 		sphere.height = 20
-		multimesh.mesh = sphere
+		multimesh.mesh = quad
+		texture = preload("res://Assets/Textures/particles/muzzle_02.png")
 		multimesh.use_colors = true
 		multimesh.use_custom_data = true
 		multimesh.instance_count = 10
@@ -47,7 +50,8 @@ class ParticleStream extends MultiMeshInstance2D:
 				multimesh.set_instance_custom_data(i, data)
 			progress = ease(progress, 1.7)
 			var pos = curves[i].sample(0, progress)
-			multimesh.set_instance_transform_2d(i, Transform2D(0, pos))
+			var rot = pos - multimesh.get_instance_transform_2d(i).get_origin()
+			multimesh.set_instance_transform_2d(i, Transform2D(rot.angle() + PI/2, pos))
 		
 		if c >= multimesh.instance_count:
 			finished.emit()
