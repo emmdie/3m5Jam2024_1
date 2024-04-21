@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/Ui/Manabar.gd" id="14_8bmil"]
 [ext_resource type="Script" path="res://Scenes/Ui/PlayerHealthPanel.gd" id="14_h6d2s"]
 [ext_resource type="Texture2D" uid="uid://bgon7lm5j5li" path="res://Assets/Textures/Ui/Hud/galaxy.png" id="15_rh864"]
-[ext_resource type="PackedScene" path="res://Scenes/Ui/animated_mana.tscn" id="16_ihlnq"]
+[ext_resource type="PackedScene" uid="uid://3s0ik63t3d7p" path="res://Scenes/Ui/animated_mana.tscn" id="16_ihlnq"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -149,11 +149,18 @@ layout_mode = 2
 
 [node name="Previews" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-offset_left = 718.0
-offset_top = 908.0
-offset_right = 1202.0
-offset_bottom = 1036.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -242.0
+offset_top = -151.0
+offset_right = 242.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/separation = 50
 
 [node name="UnitPreview1" parent="Previews" instance=ExtResource("4_pivm6")]
