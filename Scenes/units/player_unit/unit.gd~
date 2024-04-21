@@ -1,11 +1,6 @@
 class_name Unit
 extends BaseUnit
 
-signal summon_finished
-signal fight_finished
-signal died
-signal disapeared
-
 @export var behavior: Behavior
 @export var preview_cam: Camera3D
 @export var preview_spot_light: SpotLight3D
@@ -22,7 +17,6 @@ func summon() -> void:
 		preview_spot_light.hide()
 	if preview_kick_light:
 		preview_kick_light.hide()
-	current_lane.add_child(self)
 	behavior.change_state(UnitStateSummon.new())
 
 

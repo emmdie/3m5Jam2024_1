@@ -204,7 +204,7 @@ func __summon_on_lane(id: int):
 	var lane = lanes[id]
 	unit.set_lane(lane)
 	unit.summon()
-	unit.finished_animation.connect(__on_finished_summoning)
+	unit.summon_finished.connect(__on_finished_summoning)
 
 func __on_finished_summoning() -> void:
 	GameState.unit_stash.value.remove_at(GameState.selected_unit.value)
@@ -305,9 +305,7 @@ func __on_fight(unit: Unit):
 	
 	current_tower.fight(not win)
 	unit.fight(win)
-	# await current_tower.tower_destroyed
-
-	await get_tree().create_timer(0.25).timeout
+	await current_tower.tower_destroyed
 	
 	var new_tower: Tower = tower_queue.first
 	# Shift the tower queue state
@@ -340,12 +338,15 @@ func __on_tower_switch():
 	tq1.towers[0] = tq2.towers[0]
 	tq2.towers[0] = i
 	
+	tower_switch_timer.paused = true
+
 	tq1.towers[0].switch_lane(tq1.lane)
 	tq2.towers[0].switch_lane(tq2.lane)
+
 	
 	switches.append(SwitchTowerDef.new(lanes))
-	
-	await get_tree().create_timer(0.5).timeout
+	await tq2.towers[0].switch_finished
+	tower_switch_timer.paused = false	
 	__animate_warning_appear()
 
 
