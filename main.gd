@@ -6,9 +6,10 @@ extends Node
 @export var win_menu: Control
 @export var lose_menu: Control
 
-@onready var start_button = $Title/VBoxContainer/Start
+@onready var start_button = $Title/VBoxContainer/Start 
 @onready var animator = $AnimationPlayer
 @onready var licenses = $Title/LicenseViewer
+@onready var how_to_play = $Title/HowToPlay
 
 func _ready() -> void:
 	sound_manager.start_title()
@@ -53,3 +54,12 @@ func _on_start_pressed() -> void:
 	
 func _on_git_hub_pressed() -> void:
 	OS.shell_open("https://github.com/emmdie/3m5Jam2024_1")
+
+
+func _on_how_to_play_pressed() -> void:
+	how_to_play.visible = true
+	how_to_play.grab_focus()
+
+func _on_hide_button_pressed() -> void:
+	how_to_play.visible = false
+	start_button.grab_focus()

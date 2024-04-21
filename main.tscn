@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dl73eu40u43g3"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_64hq7"]
-[ext_resource type="PackedScene" path="res://Scenes/game.tscn" id="2_crre5"]
+[ext_resource type="PackedScene" uid="uid://ug3rs383rd8g" path="res://Scenes/game.tscn" id="2_crre5"]
 [ext_resource type="PackedScene" uid="uid://dmf2jvpn51pcb" path="res://Scenes/title.tscn" id="2_wg4dh"]
 [ext_resource type="PackedScene" path="res://Scenes/sound_manager.tscn" id="4_fnrpf"]
 [ext_resource type="PackedScene" uid="uid://ddxyctbu73y41" path="res://Scenes/win.tscn" id="5_0f5pv"]
@@ -94,6 +94,8 @@ libraries = {
 [connection signal="pressed" from="Title/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Title/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Title/VBoxContainer/GitHub" to="." method="_on_git_hub_pressed"]
+[connection signal="pressed" from="Title/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="Title/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Title/HowToPlay/HideButton" to="." method="_on_hide_button_pressed"]
 
 [editable path="Title"]
