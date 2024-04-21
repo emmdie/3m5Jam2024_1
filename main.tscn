@@ -21,8 +21,10 @@ sound_manager = NodePath("../SoundManager")
 [node name="SoundManager" parent="." instance=ExtResource("4_fnrpf")]
 
 [node name="Win" parent="." instance=ExtResource("5_0f5pv")]
+visible = false
 
 [node name="Lose" parent="." instance=ExtResource("6_vyvqw")]
+visible = false
 
 [connection signal="pressed" from="Title/MarginContainer/VBoxContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Title/MarginContainer/VBoxContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

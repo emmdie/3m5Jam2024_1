@@ -31,13 +31,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 7.5, 37.5)
+transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 20, 33)
 fov = 30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_3pejh")
 
 [node name="Control" parent="." instance=ExtResource("3_cfnx0")]
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.780802, 0.00654079, -0.624745, -0.582176, -0.370542, 0.72372, -0.22676, 0.928793, 0.293128, 0, 11.4597, 16.8325)
@@ -49,7 +50,7 @@ shadow_blur = 3.0
 [node name="TowerSwitchTimer" type="Timer" parent="."]
 
 [node name="CameraGamePosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 16, 27.5)
+transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 20, 33)
 
 [node name="CameraTitlePosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 7.5, 37.5)

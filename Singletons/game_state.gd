@@ -2,6 +2,7 @@
 extends GameStateBase
 
 signal unit_reached_tower(unit: Unit)
+signal game_restarted
 
 var rules := GameRules.new()
 
@@ -28,8 +29,7 @@ func restart():
 	mana.reset()
 	enemy_health.reset()
 	player_health.reset()
-	get_tree().change_scene_to_file("res://Scenes/game.tscn")
-
+	game_restarted.emit()
 
 # Override this to change the path under which the state is saved.
 func _get_file_path():
