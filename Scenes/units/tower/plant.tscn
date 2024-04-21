@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctfk4brlgutyo"]
+[gd_scene load_steps=17 format=3 uid="uid://ctfk4brlgutyo"]
 
 [ext_resource type="PackedScene" uid="uid://ckga2ynp7lmds" path="res://Scenes/units/tower/tower.tscn" id="1_imvqp"]
 [ext_resource type="PackedScene" uid="uid://bcgea1dix0m0" path="res://Assets/3d_objects/plantdoor.glb" id="2_rl2bi"]
+[ext_resource type="Texture2D" uid="uid://cxui83ouem7xh" path="res://Assets/Textures/start_screen/plant.png" id="3_oqlqx"]
 
 [sub_resource type="Image" id="Image_2sips"]
 data = {
@@ -105,6 +106,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_khara"]
 resource_name = "build"
@@ -134,6 +147,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, -3.5), Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_sl8cc"]
 resource_name = "die"
@@ -162,6 +187,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pkj4s"]
@@ -219,7 +256,12 @@ explosiveness = 0.75
 process_material = SubResource("ParticleProcessMaterial_fisbh")
 draw_pass_1 = SubResource("BoxMesh_rglg2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+[node name="Sprite3D" type="Sprite3D" parent="." index="4"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0.2, 2)
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_oqlqx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
 libraries = {
 "": SubResource("AnimationLibrary_l4apo")
 }
