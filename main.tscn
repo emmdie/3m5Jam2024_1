@@ -77,18 +77,6 @@ lose_menu = NodePath("Lose")
 
 [node name="Title" parent="." instance=ExtResource("2_wg4dh")]
 
-[node name="Title" parent="Title" index="3"]
-offset_left = -602.0
-offset_top = -518.0
-offset_right = 602.0
-offset_bottom = 0.0
-
-[node name="Image 3" parent="Title/HowToPlay/TabContainer" index="1"]
-visible = false
-
-[node name="Image 1" parent="Title/HowToPlay/TabContainer" index="2"]
-visible = true
-
 [node name="Story" type="RichTextLabel" parent="Title/HowToPlay/TabContainer" index="4"]
 visible = false
 custom_minimum_size = Vector2(600, 0)
