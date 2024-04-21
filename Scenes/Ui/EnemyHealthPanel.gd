@@ -9,7 +9,9 @@ func _ready():
 	
 	for i in GameState.rules.enemy_max_health:
 		container.add_child(heart_scene.instantiate())
-	
+	#await get_tree().create_timer(0.1)
+	#for i in GameState.rules.enemy_max_health:
+	#	container.get_child(i).explode()
 	#update()
 	
 func update() -> void:
@@ -35,5 +37,6 @@ func __animate_loose_health(from: Vector2):
 		)
 	stream.finished.connect(func():
 		Input.start_joy_vibration(0, 0.1, 0.3, 0.2)
-		target.modulate.a = 0.0
+		#target.modulate.a = 0.0
+		target.explode()
 	)
