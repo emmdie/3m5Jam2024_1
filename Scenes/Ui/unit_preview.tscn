@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://caext43hae4ho"]
+[gd_scene load_steps=6 format=3 uid="uid://caext43hae4ho"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_bqn5l"]
 [ext_resource type="Script" path="res://Scenes/Ui/unit_preview.gd" id="1_k8ekc"]
 [ext_resource type="PackedScene" uid="uid://c6i0ksc3jkqd2" path="res://Scenes/units/player_unit/fire_unit.tscn" id="1_w6020"]
 [ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="3_42whl"]
+[ext_resource type="Texture2D" uid="uid://bk1q4dma8pw3g" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_left.png" id="5_pf6at"]
 
 [node name="UnitPreview" type="PanelContainer"]
 theme = ExtResource("1_bqn5l")
@@ -37,5 +38,5 @@ expand_mode = 1
 [node name="XboxStickTexture" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-texture = ExtResource("3_42whl")
+texture = ExtResource("5_pf6at")
 expand_mode = 1
