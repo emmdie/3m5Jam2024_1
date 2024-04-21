@@ -7,3 +7,5 @@
 element = 2
 
 [node name="plantdoor" parent="." index="0" instance=ExtResource("2_rl2bi")]
+
+[editable path="plantdoor"]

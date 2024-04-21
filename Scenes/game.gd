@@ -1,3 +1,4 @@
+class_name Game
 extends Node3D
 
 
@@ -37,16 +38,22 @@ const UNITS := [
 const SwitchWarning := preload("res://Scenes/switch_warning.tscn")
 
 @export var menu: Control
-
+@export var camera: Camera3D
+@export var camera_position_title: Marker3D
+@export var camera_position_game: Marker3D
+@export var lanes_node: Node3D
+@export var tower_node: Node3D
+@export var sound_manager: SoundManager
+@export var tower_switch_timer: Timer 
 
 @onready var lanes: Array[Lane] = [
-	$Lanes/Lane1,
-	$Lanes/Lane2,
-	$Lanes/Lane3,
+	lanes_node.find_child("Lane1"),
+	lanes_node.find_child("Lane2"),
+	lanes_node.find_child("Lane3"),
 ]
 
 @onready var tower_queues: Array[TowerQueue] = []
-@onready var tower_holder := $Towers
+@onready var tower_holder := tower_node
 
 var switches: Array[SwitchTowerDef] = []
 
@@ -54,21 +61,28 @@ var switch_warning_1: Node3D
 var switch_warning_2: Node3D
 
 func _ready():
-	$Camera3D.make_current()
-	var tween: Tween = create_tween()
+	GameState.tower_switch_timer = tower_switch_timer
+	camera.make_current()
+	camera.global_position = camera_position_title.global_position
+	camera.global_rotation = camera_position_title.global_rotation
 	set_process_input(false)
 	menu.hide()
 
-	tween.tween_property($Camera3D, "position:z", $Camera3D.position.z, 2.0).from($Camera3D.position.z + 10).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+func start_game() -> void:
+	sound_manager.start_game()
+
+	var tween: Tween = create_tween()
+	tween.tween_property(camera, "global_position", camera_position_game.global_position, 2.0).from(camera_position_title.global_position).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	tween.parallel()
-	tween.tween_property($Camera3D, "rotation_degrees:x", $Camera3D.rotation_degrees.x, 2.0).from($Camera3D.rotation_degrees.x + 40).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	tween.tween_callback(game_start)
+	tween.tween_property(camera, "global_rotation", camera_position_game.global_rotation, 2.0).from(camera_position_title.global_rotation).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	tween.tween_callback(_start_action)
 
 
-func game_start() ->void:
+func _start_action() ->void:
 	set_process_input(true)
 	menu.show()
 
+	
 	GameState.mana.changed.connect(__on_mana_changed)
 	randomize()
 	GameState.player_health.changed.connect(__check_win_loose)
@@ -84,8 +98,8 @@ func game_start() ->void:
 	add_child(switch_warning_1)
 	add_child(switch_warning_2)
 	
-	GameState.tower_switch_timer = get_tree().create_timer(GameState.rules.tower_switch_time)
-	GameState.tower_switch_timer.timeout.connect(__on_tower_switch, CONNECT_ONE_SHOT)
+	tower_switch_timer.start(GameState.rules.tower_switch_time)
+	tower_switch_timer.timeout.connect(__on_tower_switch)
 	GameState.unit_reached_tower.connect(__on_fight)
 	
 	switches.append(SwitchTowerDef.new(lanes))
@@ -223,6 +237,7 @@ func __check_add_unit():
 
 
 func __on_fight(unit: Unit):
+	tower_switch_timer.paused = true
 	var tower_queue = tower_queues[0]
 	var current_lane: Lane = unit.current_lane
 	var i = 1
@@ -236,19 +251,23 @@ func __on_fight(unit: Unit):
 	print("Win: ", win)
 	if win:
 		GameState.enemy_health.value -= 1
-		GameState.destroy_enemy.emit($Camera3D.unproject_position(unit.global_position))
+		GameState.destroy_enemy.emit(camera.unproject_position(unit.global_position))
 	else:
 		GameState.player_health.value -= 1
 	
 	current_tower.fight(not win)
 	unit.fight(win)
 	# await current_tower.tower_destroyed
+
+	await get_tree().create_timer(0.25).timeout
 	
 	var new_tower: Tower = tower_queue.first
 	# Shift the tower queue state
 	tower_holder.add_child(new_tower)
 	new_tower.place(current_lane)
 	tower_queue.push(Tower.instantiate(BaseUnit.pick_element()))
+	tower_switch_timer.paused = false
+
 
 
 func __on_tower_switch():
@@ -273,9 +292,6 @@ func __on_tower_switch():
 	tq2.towers[0].switch_lane(tq2.lane)
 	
 	switches.append(SwitchTowerDef.new(lanes))
-	
-	GameState.tower_switch_timer = get_tree().create_timer(GameState.rules.tower_switch_time)
-	GameState.tower_switch_timer.timeout.connect(__on_tower_switch, CONNECT_ONE_SHOT)
 	
 	await get_tree().create_timer(0.5).timeout
 	__animate_warning_appear()

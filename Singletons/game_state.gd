@@ -18,8 +18,8 @@ signal destroy_enemy(from: Vector2)
 
 var time_to_tower_change: float:
 	get:
-		return tower_switch_timer.time_left
-@onready var tower_switch_timer: SceneTreeTimer = get_tree().create_timer(0)
+		return tower_switch_timer.time_left if tower_switch_timer else 0.0
+var tower_switch_timer: Timer
 
 
 func restart():

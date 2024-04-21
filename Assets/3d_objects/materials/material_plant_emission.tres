@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://1h7r7q3jeaan"]
+
+[ext_resource type="Texture2D" uid="uid://tncjy4y0oli2" path="res://Assets/3d_objects/plantdoor_cc-29-8x.png" id="1_bqrm5"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_bqrm5")
+roughness = 0.5
+emission_enabled = true
+emission_energy_multiplier = 10.0
+emission_texture = ExtResource("1_bqrm5")
