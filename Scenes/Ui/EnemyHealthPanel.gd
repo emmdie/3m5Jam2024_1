@@ -8,7 +8,10 @@ func _ready():
 	GameState.destroy_enemy.connect(__animate_loose_health)
 	
 	for i in GameState.rules.enemy_max_health:
-		container.add_child(heart_scene.instantiate())
+		var heart = heart_scene.instantiate()
+		container.add_child(heart)
+		heart.make_enemy()
+		
 	#await get_tree().create_timer(0.1)
 	#for i in GameState.rules.enemy_max_health:
 	#	container.get_child(i).explode()

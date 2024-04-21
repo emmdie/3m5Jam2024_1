@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dir3318ssjjov"]
+[gd_scene load_steps=8 format=3 uid="uid://dir3318ssjjov"]
 
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="1_g4tcy"]
+[ext_resource type="Texture2D" uid="uid://bubbkwmq0rd2t" path="res://Assets/Textures/start_screen/wizard.png" id="2_765bs"]
+[ext_resource type="Texture2D" uid="uid://hqd216dqlbbd" path="res://Assets/Textures/start_screen/ball.png" id="3_cl2p1"]
+[ext_resource type="Texture2D" uid="uid://bb01hn62vwgy6" path="res://Assets/Textures/start_screen/fire.png" id="4_irec7"]
+[ext_resource type="Texture2D" uid="uid://bhsxut131ia5" path="res://Assets/Textures/start_screen/water.png" id="5_k0x7c"]
+[ext_resource type="Texture2D" uid="uid://cxui83ouem7xh" path="res://Assets/Textures/start_screen/plant.png" id="6_td3ga"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_abhpi"]
+font_size = 150
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -11,47 +19,197 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_g4tcy")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.4979, 0.158617, 0.380134, 0.372549)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -262.0
+offset_top = -343.0
+offset_right = 497.0
+offset_bottom = 343.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 0.158953
+color = Color(0, 0, 0, 1)
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -553.5
+offset_top = -587.0
+offset_right = 105.5
+offset_bottom = -178.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_765bs")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+self_modulate = Color(0.76, 0.4408, 0.4408, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -822.0
+offset_right = 124.0
+offset_bottom = -514.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_cl2p1")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -90.0
+offset_right = 91.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_irec7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+self_modulate = Color(0.7189, 0.804895, 0.91, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 131.0
+offset_top = -686.0
+offset_right = 439.0
+offset_bottom = -378.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_cl2p1")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -89.0
+offset_right = 66.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_k0x7c")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect"]
+self_modulate = Color(0.6552, 0.9, 0.288, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -505.0
+offset_top = -687.0
+offset_right = -197.0
+offset_bottom = -379.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_cl2p1")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/TextureRect3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -88.0
+offset_right = 76.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_td3ga")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -794.5
+offset_top = -367.0
+offset_right = 346.5
+offset_bottom = 151.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 200
-text = "THE GAME"
+text = "Wizard Bowling"
+label_settings = SubResource("LabelSettings_abhpi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -80.0
+offset_right = -117.0
+offset_bottom = 80.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/separation = 32
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Start"
 
-[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Credits"
 
-[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 size_flags_horizontal = 4
