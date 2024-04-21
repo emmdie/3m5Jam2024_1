@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxebpofejftxv"]
+[gd_scene load_steps=5 format=3 uid="uid://bxebpofejftxv"]
 
 [ext_resource type="Script" path="res://Scenes/Minigame/Minigame.gd" id="1_gt3hp"]
 [ext_resource type="Theme" uid="uid://d2lh3hpldd764" path="res://Assets/theme.tres" id="3_6v2kw"]
+[ext_resource type="PackedScene" uid="uid://ch87j006arnjb" path="res://Scenes/Minigame/Inputs/input.tscn" id="3_e4au8"]
+[ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="4_i7yql"]
 
 [node name="Minigame" type="CenterContainer"]
 anchors_preset = 4
@@ -10,7 +12,7 @@ anchor_bottom = 0.5
 grow_vertical = 2
 script = ExtResource("1_gt3hp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="PanelContainer" parent="."]
 layout_mode = 2
 
 [node name="InputList" type="VBoxContainer" parent="VBoxContainer"]
@@ -20,3 +22,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 theme = ExtResource("3_6v2kw")
 alignment = 1
+
+[node name="Input" parent="VBoxContainer" instance=ExtResource("3_e4au8")]
+layout_mode = 2
+texture = ExtResource("4_i7yql")
+expand_mode = 3
+stretch_mode = 2

@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Scenes/Ui/Manabar.gd" id="14_8bmil"]
 [ext_resource type="Script" path="res://Scenes/Ui/PlayerHealthPanel.gd" id="14_h6d2s"]
 [ext_resource type="Texture2D" uid="uid://bgon7lm5j5li" path="res://Assets/Textures/Ui/Hud/galaxy.png" id="15_rh864"]
-[ext_resource type="PackedScene" uid="uid://3s0ik63t3d7p" path="res://Scenes/Ui/animated_mana.tscn" id="16_ihlnq"]
+[ext_resource type="PackedScene" path="res://Scenes/Ui/animated_mana.tscn" id="16_ihlnq"]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
