@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://tncjy4y0oli2" path="res://Assets/3d_objects/plantdoor_cc-29-8x.png" id="1_lype7"]
 
 [resource]
-resource_local_to_scene = true
 resource_name = "Material.002"
 cull_mode = 2
 albedo_texture = ExtResource("1_lype7")

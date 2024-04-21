@@ -6,30 +6,28 @@ signal switch_finished
 
 @export var animation: AnimationPlayer
 
-var material: StandardMaterial3D
-var max_mult: float
+var sprite: Sprite3D
+var max_pixel_size: float
 var tween: Tween
 
 func _ready():
-	material = (get_child(0).get_child(0).get_child(0).mesh as Mesh).surface_get_material(0).duplicate()
-	(get_child(0).get_child(0).get_child(0).mesh as Mesh).surface_set_material(0, material)
-	#(get_child(0).get_child(0).get_child(0).mesh as Mesh).surface_set_material()
-	print(material)
-	max_mult = material.emission_energy_multiplier
+	sprite = $Sprite3D
+	max_pixel_size = sprite.pixel_size
 
 func start_pulse():
 	if tween:
 		tween.stop()
 	if is_inside_tree():
 		tween = get_tree().create_tween().set_loops()
-		tween.tween_property(material, "emission_energy_multiplier", max_mult / 2, 0.2)
-		tween.tween_property(material, "emission_energy_multiplier", max_mult * 1, 0.2)
+		tween.tween_property($Sprite3D, "pixel_size", max_pixel_size * 0.8, 0.2)
+		tween.tween_property($Sprite3D, "pixel_size", max_pixel_size, 0.2)
+	return
 
 func stop_pulse():
 	if tween:
 		tween.stop()
 	tween = get_tree().create_tween()
-	tween.tween_property(material, "emission_energy_multiplier", max_mult, 0.2)
+	tween.tween_property(sprite, "pixel_size", max_pixel_size, 0.2)
 
 func set_lane(lane: Lane) -> void:
 	current_lane = lane
