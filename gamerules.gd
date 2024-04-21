@@ -7,7 +7,7 @@ class_name GameRules
 @export var player_unit_stash_size: int = 3
 @export var enemy_max_health: int = 10
 
-@export var tower_switch_time: float = 5.0
+@export var tower_switch_time: float = 7.0
 @export var summon_streak_time: float = 3
 @export var summon_streak_busy: int = 4
 

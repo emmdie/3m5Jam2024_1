@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://ug3rs383rd8g"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_50n6b"]
 [ext_resource type="PackedScene" uid="uid://65w17xmk8mqq" path="res://Scenes/lane.tscn" id="1_peffo"]
 [ext_resource type="PackedScene" uid="uid://cg5sgp5q3bsfb" path="res://Assets/3d_objects/3m5jam11.glb" id="2_8xq6q"]
 [ext_resource type="PackedScene" uid="uid://c8jkhdwbodrc3" path="res://Scenes/Ui/Hud.tscn" id="3_cfnx0"]
 [ext_resource type="Environment" uid="uid://ciw1fp1212j6p" path="res://Scenes/env.tres" id="4_3pejh"]
+[ext_resource type="Texture2D" uid="uid://v0hcbceenvpb" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_left.png" id="4_y2bq7"]
+[ext_resource type="Texture2D" uid="uid://dsh37apcgajsd" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_up.png" id="5_2hghs"]
+[ext_resource type="Texture2D" uid="uid://uwe2g2ptnluk" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_left.png" id="5_4xhb6"]
+[ext_resource type="Texture2D" uid="uid://dfsc1j4j5kvve" path="res://Assets/Textures/Ui/Inputs/keyboard/keyboard_arrows_right.png" id="6_rivyf"]
+[ext_resource type="Texture2D" uid="uid://dshgrb15kor4d" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_up.png" id="7_n0b6j"]
+[ext_resource type="Texture2D" uid="uid://dtmxro2pd8ha3" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_r_right.png" id="9_hggpv"]
 
 [node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_node", "tower_switch_timer", "summon_streak_timer")]
 script = ExtResource("1_50n6b")
@@ -22,14 +28,39 @@ summon_streak_timer = NodePath("SummonStreakTimer")
 [node name="Towers" type="Node3D" parent="."]
 
 [node name="Lanes" type="Node3D" parent="."]
+visible = false
 
 [node name="Lane1" parent="Lanes" instance=ExtResource("1_peffo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 
+[node name="KeyboardControl" type="Sprite3D" parent="Lanes/Lane1"]
+transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571125, 13.0581)
+texture = ExtResource("4_y2bq7")
+
+[node name="JoypadControl" type="Sprite3D" parent="Lanes/Lane1"]
+transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571125, 13.0581)
+texture = ExtResource("5_4xhb6")
+
 [node name="Lane2" parent="Lanes" instance=ExtResource("1_peffo")]
+
+[node name="KeyboardControl" type="Sprite3D" parent="Lanes/Lane2"]
+transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571, 13.058)
+texture = ExtResource("5_2hghs")
+
+[node name="JoypadControl" type="Sprite3D" parent="Lanes/Lane2"]
+transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571, 13.058)
+texture = ExtResource("7_n0b6j")
 
 [node name="Lane3" parent="Lanes" instance=ExtResource("1_peffo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="KeyboardControl" type="Sprite3D" parent="Lanes/Lane3"]
+transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571, 13.058)
+texture = ExtResource("6_rivyf")
+
+[node name="JoypadControl" type="Sprite3D" parent="Lanes/Lane3"]
+transform = Transform3D(1, 0, 0, 0, 0.370444, 0.928855, 0, -0.928855, 0.370444, 0, 0.571, 13.058)
+texture = ExtResource("9_hggpv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.826098, 0.563526, 0, -0.563526, 0.826098, 0, 20, 33)
