@@ -22,6 +22,8 @@ var time_to_tower_change: float:
 		return tower_switch_timer.time_left if tower_switch_timer else 0.0
 var tower_switch_timer: Timer
 
+enum INPUT {KEYBOARD, CONTROLLER}
+var input_mode = Value.new(INPUT.KEYBOARD, false)
 
 func restart():
 	unit_stash.value = []
@@ -45,3 +47,11 @@ func _get_password():
 # Should the state automaticaly load on startup and save on change.
 func _get_auto_save_load():
 	return true
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		input_mode = INPUT.CONTROLLER
+		print("CONTROLLER")
+	else:
+		input_mode = INPUT.KEYBOARD
+		print("KEYBBBBBB")
