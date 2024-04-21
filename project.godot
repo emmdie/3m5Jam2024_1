@@ -34,6 +34,7 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "r
 
 [gui]
 
+theme/custom="res://Assets/theme.tres"
 theme/custom_font="res://Assets/Fonts/Rosarivo-Regular.ttf"
 
 [input]
