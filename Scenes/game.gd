@@ -173,7 +173,12 @@ func _input(event):
 		__cancle_summon(1)
 	if event.is_action_released("summon_lane_2"):
 		__cancle_summon(2)
-		
+
+
+func _exit_tree():
+	for tower_queue in tower_queues:
+		for tower in tower_queue.towers:
+			tower.queue_free()
 
 
 func __check_win_loose():
