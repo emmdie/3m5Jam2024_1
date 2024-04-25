@@ -4,7 +4,7 @@
 
 [node name="Lane" type="Node3D"]
 script = ExtResource("1_ei8c4")
-lange_length = 10.0
+lange_length = 12.0
 
 [node name="TowerPlace" type="Marker3D" parent="."]
 gizmo_extents = 1.0

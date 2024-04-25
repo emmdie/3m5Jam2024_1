@@ -2,5 +2,16 @@
 
 [ext_resource type="Script" path="res://Scenes/units/tower/tower.gd" id="1_yehra"]
 
-[node name="Tower" type="Node3D"]
+[node name="Tower" type="Node3D" node_paths=PackedStringArray("death_timer", "death_timer_label")]
 script = ExtResource("1_yehra")
+death_timer = NodePath("DeathTimer")
+death_timer_label = NodePath("DeathTimerLabel")
+
+[node name="DeathTimerLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+text = "30"
+font_size = 256
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true

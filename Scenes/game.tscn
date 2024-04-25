@@ -12,20 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://5gxl5gwiw3bh" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_up.png" id="7_g00ud"]
 [ext_resource type="Texture2D" uid="uid://dk41wfkgtvb57" path="res://Assets/Textures/Ui/Inputs/xbox/xbox_stick_l_right.png" id="9_ibxc1"]
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_node", "tower_switch_timer", "summon_streak_timer")]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("menu", "camera", "camera_position_title", "camera_position_game", "lanes_node", "tower_switch_timer", "summon_streak_timer")]
 script = ExtResource("1_50n6b")
 menu = NodePath("Control")
 camera = NodePath("Camera3D")
 camera_position_title = NodePath("CameraTitlePosition")
 camera_position_game = NodePath("CameraGamePosition")
 lanes_node = NodePath("Lanes")
-tower_node = NodePath("Towers")
 tower_switch_timer = NodePath("TowerSwitchTimer")
 summon_streak_timer = NodePath("SummonStreakTimer")
 
 [node name="3m5jam11" parent="." instance=ExtResource("2_8xq6q")]
-
-[node name="Towers" type="Node3D" parent="."]
 
 [node name="Lanes" type="Node3D" parent="."]
 visible = false

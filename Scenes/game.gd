@@ -6,17 +6,6 @@ signal game_won
 signal game_lost
 
 
-class TowerQueue:
-	var lane: Lane
-	var first: Tower:
-		get:
-			return towers[0]
-	var towers: Array[Tower] = []
-	func push(t: Tower):
-		towers.push_back(t)
-	func pop() -> Tower:
-		return towers.pop_front()
-
 
 class SwitchTowerDef:
 	var lane1: Lane
@@ -29,14 +18,12 @@ class SwitchTowerDef:
 		lane2 = lanes.pick_random()
 		while lane1 == lane2:
 			lane2 = lanes.pick_random()
-
-
-const UNITS := [
-	preload("res://Scenes/units/player_unit/fire_unit.tscn"),
-	preload("res://Scenes/units/player_unit/water_unit.tscn"),
-	preload("res://Scenes/units/player_unit/plant_unit.tscn"),
-]
-
+		lane1.tower_queue.start_switchmode()
+		lane2.tower_queue.start_switchmode()
+	
+	func clear() -> void:
+		lane1.tower_queue.stop_switchmode()
+		lane2.tower_queue.stop_switchmode()
 
 const SwitchWarning := preload("res://Scenes/switch_warning.tscn")
 
@@ -45,7 +32,6 @@ const SwitchWarning := preload("res://Scenes/switch_warning.tscn")
 @export var camera_position_title: Marker3D
 @export var camera_position_game: Marker3D
 @export var lanes_node: Node3D
-@export var tower_node: Node3D
 @export var sound_manager: SoundManager
 @export var tower_switch_timer: Timer 
 @export var summon_streak_timer: Timer
@@ -56,13 +42,8 @@ const SwitchWarning := preload("res://Scenes/switch_warning.tscn")
 	lanes_node.find_child("Lane3"),
 ]
 
-@onready var tower_queues: Array[TowerQueue] = []
-@onready var tower_holder := tower_node
 
-var switches: Array[SwitchTowerDef] = []
-
-var switch_warning_1: Node3D
-var switch_warning_2: Node3D
+var current_switch: SwitchTowerDef
 
 var summon_streak: int = 0
 var can_check_summon_streak = false
@@ -95,9 +76,12 @@ func _start_action() ->void:
 	GameState.player_health.changed.connect(__check_win_loose)
 	GameState.enemy_health.changed.connect(__check_win_loose)
 	
-	GameState.unit_stash.value.append(UNITS.pick_random())
-	GameState.unit_stash.value.append(UNITS.pick_random())
-	GameState.unit_stash.value.append(UNITS.pick_random())
+	var current_element: BaseUnit.Elements = BaseUnit.pick_element()
+	GameState.unit_stash.value.append(Unit.get_scene_by_element(current_element))
+	current_element = BaseUnit.pick_element(current_element)
+	GameState.unit_stash.value.append(Unit.get_scene_by_element(current_element))
+	current_element = BaseUnit.pick_element(current_element)
+	GameState.unit_stash.value.append(Unit.get_scene_by_element(current_element))
 	GameState.unit_stash.changed.emit()
 	
 	get_tree().create_timer(15).timeout.connect(func() -> void: can_check_summon_streak = true)
@@ -108,53 +92,24 @@ func _start_action() ->void:
 			print("reset streak")
 			)
 
-	switch_warning_1 = SwitchWarning.instantiate()
-	switch_warning_2 = SwitchWarning.instantiate()
-	add_child(switch_warning_1)
-	add_child(switch_warning_2)
-	
 	tower_switch_timer.start(GameState.rules.tower_switch_time)
 	tower_switch_timer.timeout.connect(__on_tower_switch)
 	GameState.unit_reached_tower.connect(__on_fight)
+	for lane in lanes:
+		lane.start_action()	
 	
-	switches.append(SwitchTowerDef.new(lanes))
+	current_switch = SwitchTowerDef.new(lanes)
 	
-	$Lanes.show()
+	lanes_node.show()
 
 	
 	
-	for lane in lanes:
-		var queue = TowerQueue.new()
-		queue.lane = lane
-		
-		var tower := Tower.instantiate(BaseUnit.pick_element())
-		tower_holder.add_child(tower)
-		tower.place(lane)
-		queue.push(tower)
-		
-		tower = Tower.instantiate(BaseUnit.pick_element())
-		tower.set_lane(lane)
-		queue.push(tower)
-		
-		tower_queues.append(queue)
-	
-	"""
-	var unit: Unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
-	unit.set_lane(lanes[1])
-	unit.summon()
-	await get_tree().create_timer(0.1).timeout
-	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
-	unit.set_lane(lanes[2])
-	unit.summon()
-	await get_tree().create_timer(0.1).timeout
-	unit = preload("res://Scenes/units/player_unit/fire_unit.tscn").instantiate()
-	unit.set_lane(lanes[0])
-	unit.summon()
-	"""
-	
-	__animate_warning_appear()
+
 
 func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		GameState.restart()
+		get_tree().reload_current_scene()
 	if event.is_action_pressed("summon_lane_0"):
 		__summon_on_lane(0)
 	elif event.is_action_pressed("summon_lane_1"):
@@ -175,13 +130,10 @@ func _input(event):
 		__cancle_summon(2)
 
 
-func _exit_tree():
-	for tower_queue in tower_queues:
-		for tower in tower_queue.towers:
-			tower.queue_free()
-
-
 func __check_win_loose():
+	if not menu.is_visible_in_tree():
+		return
+	__check_endfight_state()
 	if GameState.enemy_health.value <= 0:
 		__game_won()
 	elif GameState.player_health.value <= 0:
@@ -212,7 +164,7 @@ func __summon_on_lane(id: int):
 	
 	var lane = lanes[id]
 	unit.set_lane(lane)
-	unit.summon()
+	unit.summon(game_won, game_lost)
 	unit.summon_finished.connect(__on_finished_summoning)
 
 func __on_finished_summoning() -> void:
@@ -232,132 +184,69 @@ func __cancle_summon(id: int):
 	summoning_unit.cancle_summoning()
 	summoning_unit = null
 
-var old_t1: Tower
-var old_t2: Tower
-func __animate_warning_appear():
-	__animate_warning_disappear()
-	for tower_queue in tower_queues:
-		if tower_queue.lane == switches[0].lane1:
-			tower_queue.first.start_pulse()
-			old_t1 = tower_queue.first
-	
-	for tower_queue in tower_queues:
-		if tower_queue.lane == switches[0].lane2:
-			tower_queue.first.start_pulse()
-			old_t2 = tower_queue.first
-	
-	"""
-	if switch_warning_1:
-		switch_warning_1.global_position = switches[0].lane1.global_position + Vector3.UP * 2
-		switch_warning_1.scale = Vector3.ZERO
-		switch_warning_1.show()
-	if switch_warning_2:
-		switch_warning_2.global_position = switches[0].lane2.global_position + Vector3.UP * 2
-		switch_warning_2.scale = Vector3.ZERO
-		switch_warning_2.show()
-		
-	var tween = get_tree().create_tween()
-	
-	if switch_warning_1:
-		tween.tween_property(switch_warning_1, "scale", Vector3.ONE, 0.1)
-	if switch_warning_2:
-		tween.parallel().tween_property(switch_warning_2, "scale", Vector3.ONE, 0.1).set_delay(0.05)
-	await tween.finished
-	"""
 
-func __animate_warning_disappear():
-	if is_instance_valid(old_t1):
-		old_t1.stop_pulse()
-		old_t1 = null
-	
-	if is_instance_valid(old_t2):
-		old_t2.stop_pulse()
-		old_t2 = null
-	
-	"""
-	var tween = get_tree().create_tween()
-	if switch_warning_1:
-		tween.tween_property(switch_warning_1, "scale", Vector3.ZERO, 0.1)
-	if switch_warning_2:
-		tween.parallel().tween_property(switch_warning_2, "scale", Vector3.ZERO, 0.1).set_delay(0.05)
-	await tween.finished
-	"""
 
 func __on_mana_changed():
 	__check_add_unit()
 
 func __check_add_unit():
 	if GameState.mana.value >= GameState.rules.player_max_mana and len(GameState.unit_stash.value) < GameState.rules.player_unit_stash_size:
-		GameState.unit_stash.value.append(UNITS.pick_random())
+		var current_element: BaseUnit.Elements = BaseUnit.pick_element()
+		if len(GameState.unit_stash.value) > 0:
+			current_element = BaseUnit.pick_element(Unit.get_element_by_scene(GameState.unit_stash.value.back()))
+		GameState.unit_stash.value.append(Unit.get_scene_by_element(current_element))
 		GameState.unit_stash.changed.emit()
 		GameState.mana.value = 0
 
 
 func __on_fight(unit: Unit):
-	tower_switch_timer.paused = true
-	var tower_queue = tower_queues[0]
 	var current_lane: Lane = unit.current_lane
-	var i = 1
-	while i < len(tower_queues) and tower_queue.lane != current_lane:
-		tower_queue = tower_queues[i]
-		i += 1
 
-	var current_tower: Tower = tower_queue.pop()
-	
+	var current_tower: Tower = current_lane.tower_queue.current_tower
+	if current_tower.is_switching:
+		await current_tower.switch_finished
+
+	tower_switch_timer.paused = true
+
 	var win := __rock_paper_siccsor(unit.element,	current_tower.element)
 	print("Win: ", win)
-	if win:
-		GameState.enemy_health.value -= 1
-		GameState.destroy_enemy.emit(camera.unproject_position(unit.global_position))
-	else:
-		GameState.player_health.value -= 1
-	
-	__check_endfight_state()
+
 	current_tower.fight(not win)
 	unit.fight(win)
-	await current_tower.tower_destroyed
+	await current_lane.tower_queue.tower_destroyed
+
+	if win:
+		GameState.unit_damage.emit(camera.unproject_position(unit.global_position))
+	else:
+		GameState.door_damage.emit(camera.unproject_position(current_tower.global_position))
 	
-	var new_tower: Tower = tower_queue.first
-	# Shift the tower queue state
-	tower_holder.add_child(new_tower)
-	new_tower.place(current_lane)
-	tower_queue.push(Tower.instantiate(BaseUnit.pick_element()))
+	await current_lane.tower_queue.tower_placed
 	tower_switch_timer.paused = false
 	
-	await get_tree().create_timer(0.2).timeout
-	__animate_warning_appear()
 
+func __place_new_tower() -> void:
+	pass
 
 
 func __on_tower_switch():
-	var tq1: TowerQueue
-	var tq2: TowerQueue
 	Input.start_joy_vibration(0, 0.1, 0.05, 0.3)
 	
-	__animate_warning_disappear()
+	var tq1: Lane.TowerQueue = current_switch.lane1.tower_queue
+	var tq2: Lane.TowerQueue = current_switch.lane2.tower_queue
 	
-	var switch = switches.pop_front()
-	
-	for tower_queue in tower_queues:
-		if tower_queue.lane == switch.lane1:
-			tq1 = tower_queue
-		elif tower_queue.lane == switch.lane2:
-			tq2 = tower_queue
-	
-	var i = tq1.towers[0]
-	tq1.towers[0] = tq2.towers[0]
-	tq2.towers[0] = i
+	var i = tq1.current_tower
+	tq1.current_tower = tq2.current_tower
+	tq2.current_tower = i
 	
 	tower_switch_timer.paused = true
 
-	tq1.towers[0].switch_lane(tq1.lane)
-	tq2.towers[0].switch_lane(tq2.lane)
+	tq1.current_tower.switch_lane(tq1.lane)
+	tq2.current_tower.switch_lane(tq2.lane)
 
-	
-	switches.append(SwitchTowerDef.new(lanes))
-	await tq2.towers[0].switch_finished
+	current_switch.clear()	
+	current_switch = SwitchTowerDef.new(lanes)
+	await tq2.current_tower.switch_finished
 	tower_switch_timer.paused = false	
-	__animate_warning_appear()
 
 
 func __rock_paper_siccsor(player: BaseUnit.Elements, enemy: BaseUnit.Elements) -> bool:
@@ -376,10 +265,27 @@ func __rock_paper_siccsor(player: BaseUnit.Elements, enemy: BaseUnit.Elements) -
 
 func __game_won() -> void:
 	sound_manager.play_won()
+	menu.hide()
+	set_process_input(false)
+	__cancle_summon(0)
+	__cancle_summon(1)
+	__cancle_summon(2)
+	tower_switch_timer.paused = true
+	for lane: Lane in lanes:
+		lane.queue_free()
 	game_won.emit()
+
 
 func __game_lost() -> void:
 	sound_manager.play_lost()
+	menu.hide()
+	set_process_input(false)
+	__cancle_summon(0)
+	__cancle_summon(1)
+	__cancle_summon(2)
+	tower_switch_timer.paused = true
+	for lane: Lane in lanes:
+		lane.queue_free()
 	game_lost.emit()
 
 
