@@ -4,9 +4,12 @@ extends CenterContainer
 @onready var game_state = get_node("/root/GameState")
 
 var max_displayed_input_sequences = 7
-var pressed_key_mapping = {"minigame_Left":"l", "minigame_Right":"r", "minigame_Up":"u", "minigame_Down":"d"}
+var pressed_key_mapping = {
+	"minigame_Left": "l", "minigame_Right": "r", "minigame_Up": "u", "minigame_Down": "d"
+}
 var sequences = []
 var current_sequence_position
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,7 +19,8 @@ func _ready():
 		sequences.append(new_sequence)
 	current_sequence_position = 0
 
-func _process(delta):
+
+func _input(_i: InputEvent):
 	if Input.is_action_just_pressed("minigame_Left"):
 		_check_input("minigame_Left")
 	if Input.is_action_just_pressed("minigame_Right"):
@@ -25,6 +29,7 @@ func _process(delta):
 		_check_input("minigame_Down")
 	if Input.is_action_just_pressed("minigame_Up"):
 		_check_input("minigame_Up")
+
 
 func _check_input(event):
 	#print(event)
@@ -38,11 +43,14 @@ func _check_input(event):
 			current_sequence_position = current_sequence_position + 1
 		#print("current_inputs_position " + str(current_sequence_position))
 
+
 func _set_mana(new_value):
 	if new_value <= game_state.rules.player_max_mana:
 		game_state.mana.value = new_value
+
 
 func _add_input_prompt():
 	var new_input = input_sequence.instantiate()
 	$VBoxContainer/InputList.add_child(new_input)
 	return new_input
+

@@ -1,14 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq0x5rro62jgf"]
+[gd_scene load_steps=3 format=3 uid="uid://cq0x5rro62jgf"]
 
-[sub_resource type="GDScript" id="GDScript_jnw6c"]
+[sub_resource type="GDScript" id="GDScript_o5woo"]
 script/source = "extends Button
 
 
 func _pressed():
 	GameState.restart()
+
+
+func _on_visibility_changed() -> void:
+	if is_visible_in_tree():
+		grab_focus()
 "
 
-[node name="Win" type="Control"]
+[sub_resource type="GDScript" id="GDScript_x3dyk"]
+script/source = "extends Button
+
+
+func _on_pressed() -> void:
+	GameState.restart()
+	get_tree().reload_current_scene()
+"
+
+[node name="Lose" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,14 +43,29 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "Loose"
+theme_override_font_sizes/font_size = 512
+text = "Lost"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Retry" type="Button" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Retry"
-script = SubResource("GDScript_jnw6c")
+script = SubResource("GDScript_o5woo")
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+script = SubResource("GDScript_x3dyk")
+
+[connection signal="visibility_changed" from="VBoxContainer/VBoxContainer/Retry" to="VBoxContainer/VBoxContainer/Retry" method="_on_visibility_changed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MainMenu" to="VBoxContainer/VBoxContainer/MainMenu" method="_on_pressed"]

@@ -3,33 +3,22 @@ extends PanelContainer
 @onready var container = $GridContainer
 @onready var heart_scene= preload("res://Scenes/Ui/enemy_heart.tscn")
 
+var internal_health: int
 
 func _ready():
-	GameState.destroy_enemy.connect(__animate_loose_health)
-	
+	GameState.unit_damage.connect(__animate_loose_health)
+	internal_health = GameState.rules.enemy_max_health	
 	for i in GameState.rules.enemy_max_health:
 		var heart = heart_scene.instantiate()
 		container.add_child(heart)
 		heart.make_enemy()
 		
-	#await get_tree().create_timer(0.1)
-	#for i in GameState.rules.enemy_max_health:
-	#	container.get_child(i).explode()
-	#update()
-	
-func update() -> void:
-	var current_hearts = container.get_children()
-	if current_hearts.size() < GameState.enemy_health.value:
-		for i in GameState.enemy_health.value:
-			var heart = heart_scene.instantiate()
-			container.add_child(heart)
-			heart.make_enemy()
-	else:
-		for i in current_hearts.size() - GameState.enemy_health.value:
-			container.get_child(i).queue_free()
 
 func __animate_loose_health(from: Vector2):
-	var target: CanvasItem = container.get_child(GameState.enemy_health.value)
+	if internal_health <= 0:
+		return
+	var target: CanvasItem = container.get_child(internal_health - 1)
+	internal_health -= 1
 	var pos = target.global_position + Vector2(24, 24)
 	var stream = ParticleOverlay.create_particle_stream(from, pos)
 	stream.hit.connect(func(_c):
@@ -42,4 +31,5 @@ func __animate_loose_health(from: Vector2):
 		Input.start_joy_vibration(0, 0.1, 0.3, 0.2)
 		#target.modulate.a = 0.0
 		target.explode()
+		GameState.enemy_health.value -= 1
 	)
